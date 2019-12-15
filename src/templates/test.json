@@ -1,0 +1,162 @@
+{
+  "Main": {
+    "relationcategorie": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "label": "Relation categorie",
+        "placeholder": "Catégorie de la recette"
+      }
+    },
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Slug",
+        "placeholder": "Slug"
+      }
+    },
+    "titre_recette": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Titre recette",
+        "placeholder": "Titre de la recette"
+      }
+    },
+    "vignette": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "vignette"
+      }
+    },
+    "description_courte": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, strong, em",
+        "allowTargetBlank": true,
+        "label": "Description courte",
+        "placeholder": "Description courte de la recette"
+      }
+    },
+    "ingredients": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "hyperlink, list-item",
+        "allowTargetBlank": true,
+        "label": "Ingrédients",
+        "placeholder": "Liste des ingrédients"
+      }
+    },
+    "temps_de_preparation": {
+      "type": "Text",
+      "config": {
+        "label": "Temps de préparation",
+        "placeholder": "Temps de préparation de la recette"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "text": [],
+          "image": [],
+          "rich_text": []
+        },
+        "choices": {
+          "text": {
+            "type": "Slice",
+            "fieldset": "Section image 1",
+            "description": "Section avec une image à gauche et un texte à droite",
+            "icon": "image",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "image_a_gauche": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "image à gauche"
+                }
+              },
+              "texte_a_droite": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, embed, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "texte a droite",
+                  "placeholder": "texte à droite"
+                }
+              }
+            }
+          },
+          "image": {
+            "type": "Slice",
+            "fieldset": "Image",
+            "description": "Une belle image centrale",
+            "icon": "image",
+            "display": "list",
+            "non-repeat": {
+              "section_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Section image"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "rich_text": {
+            "type": "Slice",
+            "fieldset": "RIch text",
+            "description": "Du contenu riche pour une délicieuse recette",
+            "icon": "text_fields",
+            "display": "list",
+            "non-repeat": {
+              "rich_text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Rich Text",
+                  "placeholder": "Oublie pas de vérifier les fautes d'orthographe"
+                }
+              }
+            },
+            "repeat": {}
+          }
+        }
+      }
+    }
+  },
+  "SEO": {
+    "meta_title": {
+      "type": "Text",
+      "config": {
+        "label": "Meta Title",
+        "placeholder": "Meta title..."
+      }
+    },
+    "meta_description": {
+      "type": "Text",
+      "config": {
+        "label": "Meta Description",
+        "placeholder": "Meta Description..."
+      }
+    },
+    "canonical": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["brewery", "country"],
+        "label": "Canonical URL",
+        "placeholder": "Select the category to use in the canonical URL"
+      }
+    }
+  }
+}
