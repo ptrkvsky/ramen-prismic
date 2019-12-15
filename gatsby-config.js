@@ -1,4 +1,4 @@
-require(`dotenv`).config({ path: `.env.${process.env.NODE_ENV}` })
+// require(`dotenv`).config({ path: `.env.${process.env.NODE_ENV}` })
 module.exports = {
   siteMetadata: {
     title: `Ramen Noob`,
@@ -23,7 +23,7 @@ module.exports = {
       resolve: `gatsby-source-prismic`,
       options: {
         repositoryName: `ramen-blog`,
-        accessToken: `${process.env.API_KEY}`,
+        accessToken: `MC5YZTZvSkJFQUFDVUF2aURW.Kg0777-9Je-_vTXvv73vv71i77-9OQhS77-977-9O--_ve-_vVsp77-9aClb77-9G1bvv73vv73vv71b`,
         linkResolver: ({ node, key, value }) => post => `/${post.slugs}`,
       },
     },
