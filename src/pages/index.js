@@ -1,8 +1,7 @@
 import React from "react"
 import TransitionLink from "gatsby-plugin-transition-link"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
+import Layout from "../components/Layout"
 import SEO from "../components/seo"
 
 import RecetteCard from "../components/recettes/RecetteCard"
@@ -11,12 +10,12 @@ const TRANSITION_LENGTH = 1.5
 
 const exitTransition = {
   length: TRANSITION_LENGTH, // Take 1.5 seconds to leave
-  trigger: () => Console.warn("We are exiting"),
+  trigger: () => console.log("We are exiting"),
 }
 
 const entryTransition = {
   delay: TRANSITION_LENGTH, // Wait 1.5 seconds before entering
-  trigger: () => Console.log("We are entering"),
+  trigger: () => console.log("We are entering"),
 }
 
 const IndexPage = ({ data }) => {
@@ -40,9 +39,6 @@ const IndexPage = ({ data }) => {
         />
       ))}
 
-      <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-        <Image />
-      </div>
       <TransitionLink
         to="/page-2/"
         exit={exitTransition}
