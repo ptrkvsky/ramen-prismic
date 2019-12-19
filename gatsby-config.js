@@ -16,7 +16,8 @@ module.exports = {
         sitemap: "http://ramen-noob.netlify.com/sitemap.xml",
         policy: [{ userAgent: "*", disallow: "/" }],
       },
-    }`gatsby-plugin-emotion`,
+    },
+    `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
@@ -25,10 +26,12 @@ module.exports = {
             family: `Bangers`,
             variants: [`400`],
           },
+          /*
           {
             family: `Montserrat`,
             variants: [`400`, `500`, `600`, `700`],
           },
+          */
         ],
       },
     },

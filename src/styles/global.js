@@ -1,9 +1,22 @@
 import { css } from "@emotion/core"
 import { theme, reset } from "../styles"
+import montserrat from "../fonts/Montserrat-VF.woff2"
 
 const globalStyles = css`
   ${reset}
-  h1, h2, h3, h4, h5, h6 {
+
+  @font-face {
+    font-family: "Montserrat";
+    src: url(${montserrat}) format("truetype");
+    font-weight: 100 800;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: ${theme.colors.headline};
   }
   html {
