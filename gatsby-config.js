@@ -8,11 +8,12 @@ module.exports = {
     siteUrl: "http://ramen-noob.netlify.com/",
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
         host: "http://ramen-noob.netlify.com/",
-        // sitemap: 'https://www.example.com/sitemap.xml',
+        sitemap: "http://ramen-noob.netlify.com/sitemap.xml",
         policy: [{ userAgent: "*", disallow: "/" }],
       },
     }`gatsby-plugin-emotion`,
