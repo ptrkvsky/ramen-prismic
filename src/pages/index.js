@@ -1,4 +1,5 @@
 import React from "react"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import TransitionLink from "gatsby-plugin-transition-link"
 
@@ -10,8 +11,11 @@ import SEO from "../components/seo"
 
 import RecetteCard from "../components/recettes/RecetteCard"
 
+/*
+ * SECTION 1
+ */
 const SectionPresentation = styled("section")`
-  padding: 2rem 0;
+  padding: 0 0 7rem;
   background-color: ${theme.colors.bgSnd};
 `
 const ContentPresentation = styled("div")`
@@ -40,15 +44,46 @@ const ContentPresentation = styled("div")`
   }
 `
 const TitrePresentation = styled("h1")`
-  font-size: 3.2rem;
+  font-size: 3.4rem;
   font-weight: 700;
   color: ${theme.colors.headline};
+  line-height: 1.3;
 `
 
 const ParaPresentation = styled("p")`
-  margin-bottom: 2rem;
+  margin-top: 3rem;
   font-size: 1.6rem;
   font-weight: 400;
+  color: ${theme.colors.headline};
+  text-align: justify;
+  max-width: 500px;
+  line-height: 1.7;
+`
+
+/*
+ * SECTION 2
+ */
+
+const SectionListing = styled("section")`
+  padding: 4rem 0 7rem;
+`
+
+const ConteneurListing = styled("div")`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  @media (max-width: ${theme.breakpoints.s}) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: ${theme.breakpoints.s}) {
+    grid-template-columns: 1fr;
+  }
+`
+
+const TitreListing = styled("h2")`
+  margin-bottom: 2.5rem;
+
+  font-size: 3rem;
+  font-weight: 700;
   color: ${theme.colors.headline};
 `
 
@@ -71,18 +106,24 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="El famoso meilleur site de ramen" />
+      <SEO title="🍜 El famoso meilleur site de ramen" />
+
       <SectionPresentation>
         <ContentPresentation>
           <div className="col col-gauche">
-            <TitrePresentation>Les recettes de ramens</TitrePresentation>
+            <TitrePresentation>
+              Tout ce qu'il faut savoir pour réaliser des ramens !
+            </TitrePresentation>
             <ParaPresentation>
-              Découvrez toute la magie des ramens à travers ces succulentes
-              recettes.
+              Ce blog a pour vocation de vous faire découvrir le monde
+              merveilleux des ramens, ce plat japonais bien souvent méconnu en
+              France. <br />
+              Vous trouverez ici un ensemble de{" "}
+              <span className="bold">recettes</span> que j'ai pu expérimenter au
+              fil des ans.
             </ParaPresentation>
           </div>
           <div className="col col-droite">
-            bloc image droite
             <Img
               fluid={data.illustration.childImageSharp.fluid}
               alt="Illustration bol de ramen"
@@ -91,15 +132,21 @@ const IndexPage = ({ data }) => {
           </div>
         </ContentPresentation>
       </SectionPresentation>
-      {recettes.map((recette, i) => (
-        <RecetteCard
-          key={i}
-          titreRecette={recette.data.titre_recette.text}
-          descriptionCourte={recette.data.description_courte.html}
-          vignette={recette.data.vignette.localFile.childImageSharp.fluid}
-          slug={recette.slugs}
-        />
-      ))}
+
+      <SectionListing className="content-center">
+        <TitreListing>Les dernières recettes pour vos ramens</TitreListing>
+        <ConteneurListing>
+          {recettes.map((recette, i) => (
+            <RecetteCard
+              key={i}
+              titreRecette={recette.data.titre_recette.text}
+              descriptionCourte={recette.data.description_courte.html}
+              vignette={recette.data.vignette.localFile.childImageSharp.fluid}
+              slug={recette.slugs}
+            />
+          ))}
+        </ConteneurListing>
+      </SectionListing>
 
       <TransitionLink
         to="/page-2/"

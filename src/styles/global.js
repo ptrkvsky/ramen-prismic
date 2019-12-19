@@ -13,9 +13,14 @@ const globalStyles = css`
   }
   body {
     font-family: ${theme.fonts.primary};
-    color: ${theme.colors.greyDarker};
+    color: ${theme.colors.paragraph};
     background-color: ${theme.colors.bg};
+    font-size: 1.6rem;
+    @media (max-width: ${theme.breakpoints.m}) {
+      font-size: 1.4rem;
+    }
   }
+
   ::selection {
     color: ${theme.colors.bg};
     background-color: ${theme.colors.primary};
@@ -31,6 +36,9 @@ const globalStyles = css`
       text-decoration: underline;
     }
   }
+  .bold {
+    font-weight: 700;
+  }
   .content-center {
     margin: 0 auto;
     max-width: ${theme.maxWidth};
@@ -39,30 +47,13 @@ const globalStyles = css`
     }
   }
 
-  @media (max-width: ${theme.breakpoints.m}) {
-    body {
-      font-size: 16px;
-    }
+  .border-top-radius {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
-  @media (max-width: ${theme.breakpoints.s}) {
-    h1 {
-      font-size: 2.369rem;
-    }
-    h2 {
-      font-size: 1.777rem;
-    }
-    h3 {
-      font-size: 1.333rem;
-    }
-    h4 {
-      font-size: 1rem;
-    }
-    h5 {
-      font-size: 0.75rem;
-    }
-    h6 {
-      font-size: 0.563rem;
-    }
+  .border-bottom-radius {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
 `
 export default globalStyles

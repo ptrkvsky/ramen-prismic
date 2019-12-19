@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
         <Global styles={globalStyles} />
         <Header siteTitle={data.site.siteMetadata.title} />
         <main>{children}</main>
-        <footer>
+        <footer className="content-center">
           © {new Date().getFullYear()}, Construit avec amour,
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a> et{" "}

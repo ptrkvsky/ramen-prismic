@@ -5,9 +5,17 @@ module.exports = {
     tagline: `From ramen noob to ramen lord`,
     description: `Le meilleur rien que le meilleur, tout pour réaliser les meilleurs bol de ramen.`,
     author: `@kovskyD`,
+    siteUrl: "http://ramen-noob.netlify.com/",
   },
   plugins: [
-    `gatsby-plugin-emotion`,
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "http://ramen-noob.netlify.com/",
+        // sitemap: 'https://www.example.com/sitemap.xml',
+        policy: [{ userAgent: "*", disallow: "/" }],
+      },
+    }`gatsby-plugin-emotion`,
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {

@@ -1,11 +1,20 @@
 const theme = {
   colors: {
     primary: "#ec002a",
+
     paragraph: "#172c66",
+    paragraphCard: "#fef6e4",
+
+    buttonCardBg: "#fef6e4",
+    buttonCardText: "#001858",
+
     headline: "#001858",
+    headlineCard: "#fffffe",
+
     bg: "#fffffe",
     bgSnd: "#fef6e4",
-    headline: "#001858",
+    bgCard: "#001858",
+
     black: "#000",
     greyLight: "#EBEDF2",
     greyBlue: "#a2bce2",
