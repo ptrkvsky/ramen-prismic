@@ -26,12 +26,10 @@ module.exports = {
             family: `Bangers`,
             variants: [`400`],
           },
-          /*
           {
             family: `Montserrat`,
             variants: [`400`, `500`, `600`, `700`],
           },
-          */
         ],
       },
     },

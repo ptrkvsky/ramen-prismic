@@ -5,12 +5,6 @@ import montserrat from "../fonts/Montserrat-VF.woff2"
 const globalStyles = css`
   ${reset}
 
-  @font-face {
-    font-family: "Montserrat";
-    src: url(${montserrat}) format("truetype");
-    font-weight: 100 800;
-  }
-
   h1,
   h2,
   h3,
