@@ -1,6 +1,8 @@
 const theme = {
   colors: {
     primary: "#ec002a",
+    secondary: "#8bd3dd",
+    tertiary: "#f582ae",
 
     paragraph: "#172c66",
     paragraphCard: "#fef6e4",

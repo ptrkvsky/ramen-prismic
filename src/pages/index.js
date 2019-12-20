@@ -66,16 +66,21 @@ const ParaPresentation = styled("p")`
 
 const SectionListing = styled("section")`
   padding: 4rem 0 7rem;
+  @media (max-width: ${theme.breakpoints.s}) {
+    padding: 4rem 0.75rem 7rem;
+  }
 `
 
 const ConteneurListing = styled("div")`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 4rem;
   @media (max-width: ${theme.breakpoints.s}) {
     grid-template-columns: 1fr 1fr;
   }
   @media (max-width: ${theme.breakpoints.s}) {
     grid-template-columns: 1fr;
+    grid-row-gap: 3rem;
   }
 `
 
@@ -141,7 +146,7 @@ const IndexPage = ({ data }) => {
               key={i}
               titreRecette={recette.data.titre_recette.text}
               descriptionCourte={recette.data.description_courte.html}
-              vignette={recette.data.vignette.localFile.childImageSharp.fluid}
+              vignette={recette.data.vignette.localFile.childImageSharp.fixed}
               slug={recette.slugs}
             />
           ))}
@@ -175,8 +180,8 @@ export const query = graphql`
           vignette {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 500) {
-                  ...GatsbyImageSharpFluid
+                fixed(height: 360, width: 360) {
+                  ...GatsbyImageSharpFixed
                 }
               }
             }

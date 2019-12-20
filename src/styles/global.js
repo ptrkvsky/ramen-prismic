@@ -43,9 +43,20 @@ const globalStyles = css`
       text-decoration: underline;
     }
   }
+  /* helpers */
+  .d-block {
+    display: block;
+  }
+
+  /* fonts */
   .bold {
     font-weight: 700;
   }
+
+  .f-zero {
+    font-size: 0;
+  }
+
   .content-center {
     margin: 0 auto;
     max-width: ${theme.maxWidth};
