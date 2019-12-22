@@ -1,6 +1,5 @@
 import { css } from "@emotion/core"
 import { theme, reset } from "../styles"
-import montserrat from "../fonts/Montserrat-VF.woff2"
 
 const globalStyles = css`
   ${reset}

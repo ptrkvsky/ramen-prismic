@@ -1,5 +1,6 @@
 import React from "react"
 import Img from "gatsby-image"
+
 import { Link } from "gatsby"
 
 import styled from "@emotion/styled"
@@ -18,16 +19,25 @@ const Article = styled("article")`
 const BlocDesc = styled("div")`
   display: block;
   min-height: 190px;
-  padding: 2rem;
-  background-color: ${theme.colors.bgCard};
-  color: ${theme.colors.paragraphCard};
+  padding: 3rem 2.5rem;
+
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+
+  background-color: ${theme.colors.tertiary};
 `
 const TitreRecette = styled("h2")`
-  padding: 0 0 1.8rem;
+  min-height: 6rem;
+  padding: 0 0 1.5rem;
 
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: ${theme.colors.headlineCard};
+  font-family: ${theme.fonts.secondary};
+  font-size: 2.4rem;
+  color: ${theme.colors.secondary};
+  text-transform: uppercase;
+
+  @media (max-width: ${theme.breakpoints.s}) {
+    min-height: 0;
+  }
 `
 
 const ButtonLink = styled("div")`
@@ -40,21 +50,20 @@ const ButtonLink = styled("div")`
     margin-top: 1.5rem;
     border-radius: 3px;
 
-    background-color: ${theme.colors.buttonCardBg};
+    background-color: ${theme.colors.secondary};
     font-weight: 600;
-    color: ${theme.colors.buttonCardText};
+    color: ${theme.colors.tertiary};
     text-decoration: none;
     font-style: normal;
     :hover {
-      background-color: ${theme.colors.tertiary};
     }
   }
 `
 
-const RecetteCard = ({ titreRecette, descriptionCourte, vignette, slug }) => {
+const RecetteCard = ({ titreRecette, descriptionCourte, vignette, uid }) => {
   return (
     <Article>
-      <Link className="f-zero d-block" to={`/recettes/${slug}`}>
+      <Link className="f-zero d-block" to={`/recettes/${uid}`}>
         <Img
           fixed={vignette}
           alt={titreRecette}
@@ -65,7 +74,7 @@ const RecetteCard = ({ titreRecette, descriptionCourte, vignette, slug }) => {
         <TitreRecette>{titreRecette}</TitreRecette>
         <div dangerouslySetInnerHTML={{ __html: descriptionCourte }} />
         <ButtonLink>
-          <Link to={`/recettes/${slug}`}>Miam Miam</Link>
+          <Link to={`/recettes/${uid}`}>Miam Miam</Link>
         </ButtonLink>
       </BlocDesc>
     </Article>

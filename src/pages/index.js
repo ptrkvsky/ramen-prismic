@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
+import BackgroundImage from "gatsby-background-image"
 import TransitionLink from "gatsby-plugin-transition-link"
 
 import styled from "@emotion/styled"
@@ -44,20 +45,21 @@ const ContentPresentation = styled("div")`
   }
 `
 const TitrePresentation = styled("h1")`
-  font-size: 3.4rem;
-  font-weight: 700;
+  font-family: ${theme.fonts.secondary};
+  font-size: 3.5rem;
+  font-weight: 600;
   color: ${theme.colors.headline};
-  line-height: 1.3;
+  line-height: 5rem;
 `
 
 const ParaPresentation = styled("p")`
   margin-top: 3rem;
-  font-size: 1.6rem;
+  font-size: 2rem;
+  line-height: 3.5rem;
   font-weight: 400;
-  color: ${theme.colors.headline};
+  color: ${theme.colors.paragraph};
   text-align: justify;
   max-width: 500px;
-  line-height: 1.7;
 `
 
 /*
@@ -65,7 +67,7 @@ const ParaPresentation = styled("p")`
  */
 
 const SectionListing = styled("section")`
-  padding: 4rem 0 7rem;
+  padding: 5.5rem 0;
   @media (max-width: ${theme.breakpoints.s}) {
     padding: 4rem 0.75rem 7rem;
   }
@@ -74,7 +76,7 @@ const SectionListing = styled("section")`
 const ConteneurListing = styled("div")`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 4rem;
+  grid-column-gap: 5rem;
   @media (max-width: ${theme.breakpoints.s}) {
     grid-template-columns: 1fr 1fr;
   }
@@ -85,11 +87,9 @@ const ConteneurListing = styled("div")`
 `
 
 const TitreListing = styled("h2")`
-  margin-bottom: 2.5rem;
-
+  margin-bottom: 5rem;
   font-size: 3rem;
-  font-weight: 700;
-  color: ${theme.colors.headline};
+  color: ${theme.colors.tertiary};
 `
 
 const TRANSITION_LENGTH = 1.5
@@ -137,22 +137,26 @@ const IndexPage = ({ data }) => {
           </div>
         </ContentPresentation>
       </SectionPresentation>
-
-      <SectionListing className="content-center">
-        <TitreListing>Les dernières recettes pour vos ramens</TitreListing>
-        <ConteneurListing>
-          {recettes.map((recette, i) => (
-            <RecetteCard
-              key={i}
-              titreRecette={recette.data.titre_recette.text}
-              descriptionCourte={recette.data.description_courte.html}
-              vignette={recette.data.vignette.localFile.childImageSharp.fixed}
-              slug={recette.slugs}
-            />
-          ))}
-        </ConteneurListing>
-      </SectionListing>
-
+      <BackgroundImage
+        Tag="section"
+        fluid={data.background_listing.childImageSharp.fluid}
+      >
+        <SectionListing className="content-center">
+          <TitreListing>Les dernières recettes pour vos ramens</TitreListing>
+          <ConteneurListing>
+            {recettes.map((recette, i) => (
+              <RecetteCard
+                key={i}
+                titreRecette={recette.data.titre_recette.text}
+                descriptionCourte={recette.data.description_courte.html}
+                vignette={recette.data.vignette.localFile.childImageSharp.fixed}
+                uid={recette.uid}
+              />
+            ))}
+          </ConteneurListing>
+        </SectionListing>
+      </BackgroundImage>
+      {/* 
       <TransitionLink
         to="/page-2/"
         exit={exitTransition}
@@ -160,6 +164,7 @@ const IndexPage = ({ data }) => {
       >
         Go to page 2
       </TransitionLink>
+      */}
     </Layout>
   )
 }
@@ -169,7 +174,7 @@ export const query = graphql`
   {
     allPrismicArticle {
       nodes {
-        slugs
+        uid
         data {
           description_courte {
             html
@@ -199,6 +204,13 @@ export const query = graphql`
     illustration: file(relativePath: { eq: "illustration-ramen-bol.png" }) {
       childImageSharp {
         fluid(maxWidth: 512) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    background_listing: file(relativePath: { eq: "background_listing.jpg" }) {
+      childImageSharp {
+        fluid(quality: 100, maxWidth: 1920) {
           ...GatsbyImageSharpFluid
         }
       }

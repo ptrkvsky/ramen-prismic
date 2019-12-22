@@ -1,31 +1,19 @@
 const theme = {
   colors: {
-    primary: "#ec002a",
-    secondary: "#8bd3dd",
-    tertiary: "#f582ae",
+    primary: "#ec002a", // Marron
+    secondary: "#d32f2f", // Rouge
+    tertiary: "#f6f4df", //Blanc
+    bgFooter: "#9b1f1f",
+    paragraph: "#3a2828",
 
-    paragraph: "#172c66",
-    paragraphCard: "#fef6e4",
-
-    buttonCardBg: "#fef6e4",
-    buttonCardText: "#001858",
-
-    headline: "#001858",
-    headlineCard: "#fffffe",
+    headline: "#d32f2f",
 
     bg: "#fffffe",
     bgSnd: "#fef6e4",
-    bgCard: "#001858",
-
-    black: "#000",
-    greyLight: "#EBEDF2",
-    greyBlue: "#a2bce2",
-    grey: "#595C62",
-    greyDark: "#303643",
-    greyDarker: "#1c252b",
   },
   fonts: {
-    primary: "Montserrat",
+    primary: "Oswald, sans-serif",
+    secondary: "Poppins, sans-serif",
   },
   maxWidth: "1080px",
   maxWidthText: "720px",

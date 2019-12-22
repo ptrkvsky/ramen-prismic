@@ -1,0 +1,29 @@
+$tertiary-color: #f582ae;
+
+.guillemets {
+  position: relative;
+  quotes: "\201C""\201D""\2018""\2019";
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  background: #f9f9f9;
+  &:before {
+    content: open-quote;
+    display: block;
+    position: absolute;
+    top: -41px;
+    left: -24px;
+    font-size: 82px;
+    font-weight: 900;
+    color: $tertiary-color;
+  }
+  &:after {
+    content: close-quote;
+    display: block;
+    position: absolute;
+    right: -21px;
+    bottom: -72px;
+    font-size: 82px;
+    font-weight: 900;
+    color: $tertiary-color;
+  }
+}

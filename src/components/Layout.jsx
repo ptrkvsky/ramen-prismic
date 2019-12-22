@@ -15,6 +15,7 @@ import { ThemeProvider } from "emotion-theming"
 import { theme, globalStyles } from "../styles"
 
 import Header from "./header"
+import Footer from "./footer"
 // import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -34,12 +35,7 @@ const Layout = ({ children }) => {
         <Global styles={globalStyles} />
         <Header siteTitle={data.site.siteMetadata.title} />
         <main>{children}</main>
-        <footer className="content-center">
-          © {new Date().getFullYear()}, Construit avec amour,
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a> et{" "}
-          <a href="https://www.prismic.io">Prismic</a>
-        </footer>
+        <Footer />
       </ThemeProvider>
     </>
   )
