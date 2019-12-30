@@ -12,7 +12,7 @@ const theme = {
     bgSnd: "#fef6e4",
   },
   fonts: {
-    primary: "Roboto",
+    primary: "Oswald",
     secondary: "Poppins, sans-serif",
   },
   maxWidth: "1080px",
