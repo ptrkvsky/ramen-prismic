@@ -47,7 +47,6 @@ const ContentPresentation = styled("div")`
 const TitrePresentation = styled("h1")`
   font-family: ${theme.fonts.secondary};
   font-size: 3.5rem;
-  font-weight: 600;
   color: ${theme.colors.headline};
   line-height: 5rem;
 `

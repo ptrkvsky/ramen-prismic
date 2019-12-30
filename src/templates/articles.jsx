@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import "../styles/global.scss"
 import styled from "@emotion/styled"
 import theme from "../styles/theme"
 

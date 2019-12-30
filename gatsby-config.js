@@ -19,14 +19,14 @@ module.exports = {
       },
     },
     `gatsby-plugin-emotion`,
-    {
-      resolve: "gatsby-plugin-web-font-loader",
+    /*
       options: {
         google: {
           families: ["Oswald", "Poppins", "Bangers"],
         },
       },
-    },
+      */
+
     `gatsby-plugin-transition-link`,
     {
       resolve: `gatsby-source-prismic`,
