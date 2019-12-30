@@ -8,6 +8,25 @@ module.exports = {
     siteUrl: "http://ramen-noob.netlify.com/",
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Roboto`,
+            variants: [`400`, `900`],
+          },
+          {
+            family: `Poppins`,
+            variants: [`400`, `700`],
+          },
+          {
+            family: `Bangers`,
+            subsets: [`latin`],
+          },
+        ],
+      },
+    },
     `gatsby-plugin-sass`,
     `gatsby-plugin-sitemap`,
     {
@@ -19,13 +38,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-emotion`,
-    /*
-      options: {
-        google: {
-          families: ["Oswald", "Poppins", "Bangers"],
-        },
-      },
-      */
 
     `gatsby-plugin-transition-link`,
     {

@@ -12,7 +12,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { Global } from "@emotion/core"
 import { ThemeProvider } from "emotion-theming"
 
-import "../styles/global.scss"
+//import "../styles/global.scss"
 import { theme, globalStyles } from "../styles"
 
 import Header from "./header"
