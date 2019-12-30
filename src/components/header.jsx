@@ -5,11 +5,20 @@ import React from "react"
 import styled from "@emotion/styled"
 import theme from "../styles/theme"
 
+const BlocHeader = styled("header")`
+  background-color: ${theme.colors.bgSnd};
+`
+const ContentCenter = styled("div")`
+  margin: 0 auto;
+  max-width: ${theme.maxWidth};
+  padding: 1.45rem 1.0875rem;
+`
+
 const MainTitle = styled("div")`
   margin: 0;
   font-family: "Bangers";
   a {
-    color: ${theme.colors.primary};
+    color: ${theme.colors.secondary};
     font-size: 4rem;
     :hover {
       text-decoration: none;
@@ -21,17 +30,6 @@ const MainTitle = styled("div")`
       font-size: 3rem;
     }
   }
-`
-
-const ContentCenter = styled("div")`
-  margin: 0 auto;
-  max-width: ${theme.maxWidth};
-  padding: 1.45rem 1.0875rem;
-`
-
-const BlocHeader = styled("header")`
-  padding-bottom: 1.45rem;
-  background-color: ${theme.colors.bgSnd};
 `
 
 const Header = ({ siteTitle }) => (

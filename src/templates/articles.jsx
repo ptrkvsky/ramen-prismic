@@ -38,32 +38,32 @@ const GridPresentationRecette = styled("div")`
 `
 
 const PresentationRecette = styled("section")`
-  background: ${theme.colors.bgCard};
-  padding: 2rem 2.5rem;
+  background-color: ${theme.colors.bgSnd};
+  padding: 3.75rem 4rem;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
   border-radius: 0.25rem;
 
   .titre-recette {
-    color: ${theme.colors.headlineCard};
-    font-size: 4.5rem;
+    color: ${theme.colors.secondary};
+    font-size: 5rem;
+    line-height: 5.5rem;
+    font-family: ${theme.fonts.secondary};
     font-weight: 600;
     text-transform: uppercase;
-    line-height: 1.5;
   }
 
-  .titre-ingredients {
+  .sous-titre {
     margin-top: 1.75rem;
-    color: ${theme.colors.headlineCard};
-    font-size: 2rem;
-    font-weight: 600;
+
+    color: ${theme.colors.paragraph};
+    font-size: 3.2rem;
   }
 
-  .liste-ingredients {
+  .paragraph-card {
     margin-top: 1.75rem;
-    color: ${theme.colors.paragraphCard};
     line-height: 1.6;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 2.4rem;
+    line-height: 3.5rem;
   }
 `
 
@@ -92,7 +92,7 @@ const Citation = styled("div")`
 
 const Article = ({ data: { prismicArticle } }) => {
   const { data } = prismicArticle
-  console.log(data)
+  console.log(data.temps_de_preparation)
   return (
     <Layout>
       <SEO title={data.titre_recette.text} />
@@ -108,11 +108,13 @@ const Article = ({ data: { prismicArticle } }) => {
         <GridPresentationRecette>
           <PresentationRecette>
             <h1 className="titre-recette">{data.titre_recette.text}</h1>
-            <h2 className="titre-ingredients">Ingrédients :</h2>
+            <h2 className="sous-titre">Ingrédients :</h2>
             <div
-              className="liste-ingredients"
+              className="paragraph-card"
               dangerouslySetInnerHTML={{ __html: data.ingredients.html }}
             />
+            <p className="sous-titre">Temps de préparation :</p>
+            <p className="paragraph-card">{data.temps_de_preparation}</p>
           </PresentationRecette>
           <ConteneurCitation>
             <Citation>
@@ -141,6 +143,7 @@ export const pageQuery = graphql`
           html
           text
         }
+        temps_de_preparation
         citation {
           text
         }
