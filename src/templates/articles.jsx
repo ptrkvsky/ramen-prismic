@@ -37,7 +37,7 @@ const GridPresentationRecette = styled("div")`
 `
 
 const PresentationRecette = styled("section")`
-  background-color: ${theme.colors.bgSnd};
+  background-color: ${theme.colors.bg};
   padding: 3.75rem 4rem;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
   border-radius: 0.25rem;
@@ -78,13 +78,12 @@ const Citation = styled("div")`
   display: inline-block;
   padding: 2rem 2.5rem;
 
-  color: ${theme.colors.tertiary};
+  color: ${theme.colors.paragraph};
   font-size: 2.5rem;
   font-family: ${theme.fonts.primary};
   line-height: 1.5;
 
-  background: ${theme.colors.bgCard};
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  /* box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175); */
   border-radius: 0.25rem;
   text-align: center;
 `

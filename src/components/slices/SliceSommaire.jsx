@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 import theme from "../../styles/theme"
+import { Link } from "react-scroll"
 
 const SectionSommaire = styled("div")`
   max-width: 740px;
@@ -33,9 +34,14 @@ const SectionSommaire = styled("div")`
   .item-sommaire {
     color: ${theme.colors.paragraph};
     font-size: 2.4rem;
-    line-height: 3rem;
+    line-height: 1.5;
     font-weight: normal;
     font-style: normal;
+    &:hover {
+      color: ${theme.colors.primary};
+      text-decoration: none;
+      cursor: pointer;
+    }
   }
 `
 
@@ -48,9 +54,17 @@ export default ({ slice }) => {
           {slice.items.map(function(item) {
             return (
               <li>
-                <a className="item-sommaire" href={`#${item.id_item_sommaire}`}>
+                <Link
+                  className="item-sommaire"
+                  activeClass="active"
+                  to={item.id_item_sommaire}
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                >
                   {item.id_item_sommaire}
-                </a>
+                </Link>
               </li>
             )
           })}

@@ -1,13 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:400,600&display=swap");
 
-$tertiary-color: #f582ae;
+$primary-color: #d32f2f;
 
 .guillemets {
   position: relative;
   quotes: "\201C""\201D""\2018""\2019";
   margin: 1.5em 10px;
   padding: 0.5em 10px;
-  background: #f9f9f9;
   &:before {
     content: open-quote;
     display: block;
@@ -16,7 +15,7 @@ $tertiary-color: #f582ae;
     left: -24px;
     font-size: 82px;
     font-weight: 900;
-    color: $tertiary-color;
+    color: $primary-color;
   }
   &:after {
     content: close-quote;
@@ -26,6 +25,6 @@ $tertiary-color: #f582ae;
     bottom: -72px;
     font-size: 82px;
     font-weight: 900;
-    color: $tertiary-color;
+    color: $primary-color;
   }
 }
