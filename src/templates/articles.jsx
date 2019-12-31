@@ -91,7 +91,9 @@ const Citation = styled("div")`
 
 const Article = ({ data: { prismicArticle } }) => {
   const { data } = prismicArticle
-  console.log(data.temps_de_preparation)
+  {
+    /* console.log(data) */
+  }
   return (
     <Layout>
       <SEO title={data.titre_recette.text} />
@@ -221,6 +223,23 @@ export const pageQuery = graphql`
               texte_a_gauche {
                 html
               }
+            }
+          }
+          ... on PrismicArticleBodySommaire {
+            items {
+              id_item_sommaire
+              item_sommaire
+            }
+            slice_type
+          }
+          ... on PrismicArticleBodyTitreAvecSommaire {
+            id
+            slice_type
+            items {
+              hn_sommaire {
+                html
+              }
+              id_sommaire
             }
           }
         }
