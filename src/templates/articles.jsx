@@ -43,11 +43,11 @@ const PresentationRecette = styled("section")`
   border-radius: 0.25rem;
 
   .titre-recette {
-    color: ${theme.colors.secondary};
+    color: ${theme.colors.primary};
     font-size: 5rem;
     line-height: 5.5rem;
     font-family: ${theme.fonts.secondary};
-    font-weight: 600;
+    font-weight: 400;
     text-transform: uppercase;
   }
 
@@ -80,7 +80,7 @@ const Citation = styled("div")`
 
   color: ${theme.colors.tertiary};
   font-size: 2.5rem;
-  font-family: ${theme.fonts.secondary};
+  font-family: ${theme.fonts.primary};
   line-height: 1.5;
 
   background: ${theme.colors.bgCard};

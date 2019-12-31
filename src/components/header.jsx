@@ -7,6 +7,7 @@ import theme from "../styles/theme"
 
 const BlocHeader = styled("header")`
   background-color: ${theme.colors.bgSnd};
+  border-bottom: 10px solid ${theme.colors.primary};
 `
 const ContentCenter = styled("div")`
   margin: 0 auto;
@@ -18,8 +19,9 @@ const MainTitle = styled("div")`
   margin: 0;
   font-family: "Bangers";
   a {
-    color: ${theme.colors.secondary};
+    color: ${theme.colors.primary};
     font-size: 4rem;
+    font-style: normal;
     :hover {
       text-decoration: none;
     }

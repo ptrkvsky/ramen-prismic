@@ -1,7 +1,7 @@
 import React from "react"
 import Img from "gatsby-image"
 
-import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import styled from "@emotion/styled"
 import theme from "../../styles/theme"
@@ -32,7 +32,7 @@ const TitreRecette = styled("h2")`
 
   font-family: ${theme.fonts.secondary};
   font-size: 2.4rem;
-  color: ${theme.colors.secondary};
+  color: ${theme.colors.primary};
   text-transform: uppercase;
 
   @media (max-width: ${theme.breakpoints.s}) {
@@ -50,12 +50,13 @@ const ButtonLink = styled("div")`
     margin-top: 1.5rem;
     border-radius: 3px;
 
-    background-color: ${theme.colors.secondary};
+    background-color: ${theme.colors.primary};
     font-weight: 600;
     color: ${theme.colors.tertiary};
     text-decoration: none;
     font-style: normal;
     :hover {
+      background-color: ${theme.colors.paragraph};
     }
   }
 `
@@ -63,18 +64,26 @@ const ButtonLink = styled("div")`
 const RecetteCard = ({ titreRecette, descriptionCourte, vignette, uid }) => {
   return (
     <Article>
-      <Link className="f-zero d-block" to={`/recettes/${uid}`}>
+      <AniLink
+        duration={0.6}
+        hex={theme.colors.bgSnd}
+        paintDrip
+        className="f-zero d-block"
+        to={`/recettes/${uid}`}
+      >
         <Img
           fixed={vignette}
           alt={titreRecette}
           className="border-top-radius"
         />
-      </Link>
+      </AniLink>
       <BlocDesc className="border-bottom-radius">
         <TitreRecette>{titreRecette}</TitreRecette>
         <div dangerouslySetInnerHTML={{ __html: descriptionCourte }} />
         <ButtonLink>
-          <Link to={`/recettes/${uid}`}>Miam Miam</Link>
+          <AniLink fade to={`/recettes/${uid}`}>
+            Miam Miam
+          </AniLink>
         </ButtonLink>
       </BlocDesc>
     </Article>

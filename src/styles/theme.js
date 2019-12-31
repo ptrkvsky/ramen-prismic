@@ -1,15 +1,15 @@
 const theme = {
   colors: {
-    primary: "#ec002a", // Marron
-    secondary: "#d32f2f", // Rouge
+    primary: "#d32f2f", // Marron
+    secondary: "#ec002a", // Rouge
     tertiary: "#f6f4df", //Blanc
     bgFooter: "#9b1f1f",
     paragraph: "#3a2828",
 
     headline: "#d32f2f",
 
-    bg: "#fffffe",
-    bgSnd: "#fef6e4",
+    bg: "#fefbf4",
+    bgSnd: "#fdf6e4",
   },
   fonts: {
     primary: "Oswald",

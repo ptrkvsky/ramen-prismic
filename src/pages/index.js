@@ -17,7 +17,6 @@ import RecetteCard from "../components/recettes/RecetteCard"
  */
 const SectionPresentation = styled("section")`
   padding: 0 0 7rem;
-  background-color: ${theme.colors.bgSnd};
 `
 const ContentPresentation = styled("div")`
   display: flex;
@@ -29,6 +28,7 @@ const ContentPresentation = styled("div")`
   max-width: ${theme.maxWidth};
 
   .gatsby-image-wrapper {
+    top: -28px;
     width: 512px;
     max-width: 100%;
   }
