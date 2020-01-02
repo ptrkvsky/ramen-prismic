@@ -17,7 +17,6 @@ import RecetteCard from "../components/recettes/RecetteCard"
  */
 const SectionPresentation = styled("section")`
   padding: 0 0 7rem;
-  border: 0;
 `
 const ContentPresentation = styled("div")`
   display: flex;
