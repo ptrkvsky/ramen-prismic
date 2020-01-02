@@ -17,9 +17,10 @@ const SectionSommaire = styled("div")`
   font-size: 2.4rem;
 
   .titre-sommaire {
-    font-size: 3.5rem;
-    text-transform: uppercase;
     font-family: ${theme.fonts.secondary};
+    font-size: 3.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
     text-align: center;
   }
 

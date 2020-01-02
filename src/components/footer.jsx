@@ -15,7 +15,7 @@ const BlockFooter = styled("footer")`
 const Footer = () => (
   <BlockFooter>
     <div className="content-center">
-      © {new Date().getFullYear()}, Construit avec amour,
+      © 2019 - {new Date().getFullYear()}, Construit avec amour,
       {` `}
       <a href="https://www.gatsbyjs.org">Gatsby</a> et{" "}
       <a href="https://www.prismic.io">Prismic</a>

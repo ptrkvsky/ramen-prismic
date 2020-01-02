@@ -1,14 +1,15 @@
 import React from "react"
 import styled from "@emotion/styled"
+import theme from "../../styles/theme"
 
 const TitreSommaire = styled("div")`
-  font-size: 2.4rem;
   max-width: 740px;
-  margin-right: auto;
-  margin-left: auto;
-  p {
-    margin-bottom: 3.5rem;
-  }
+  margin: 0 auto 4.5rem;
+
+  font-family: ${theme.fonts.secondary};
+  font-weight: 500;
+  font-size: 3.2rem;
+  text-transform: uppercase;
 `
 
 export default ({ slice }) => {

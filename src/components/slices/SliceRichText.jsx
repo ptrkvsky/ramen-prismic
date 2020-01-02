@@ -8,6 +8,7 @@ const Section_rich_text = styled("div")`
   margin-left: auto;
   p {
     margin-bottom: 3.5rem;
+    line-height: 1.5;
   }
 `
 

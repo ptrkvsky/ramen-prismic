@@ -31,6 +31,7 @@ const globalStyles = css`
     color: ${theme.colors.bg};
     background-color: ${theme.colors.primary};
   }
+
   a {
     color: ${theme.colors.primary};
     transition: all 0.4s ease-in-out;
@@ -42,6 +43,11 @@ const globalStyles = css`
       text-decoration: underline;
     }
   }
+
+  strong {
+    font-weight: bold;
+  }
+
   /* helpers */
   .d-block {
     display: block;

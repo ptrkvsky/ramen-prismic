@@ -47,7 +47,7 @@ const PresentationRecette = styled("section")`
     font-size: 5rem;
     line-height: 5.5rem;
     font-family: ${theme.fonts.secondary};
-    font-weight: 400;
+    font-weight: 500;
     text-transform: uppercase;
   }
 
