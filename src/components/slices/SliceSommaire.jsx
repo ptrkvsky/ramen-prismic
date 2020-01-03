@@ -10,6 +10,9 @@ const SectionSommaire = styled("div")`
   box-sizing: border-box;
   margin-right: auto;
   margin-left: auto;
+  @media (max-width: ${theme.breakpoints.m}) {
+    margin-bottom: 5rem;
+  }
 
   border-radius: 1rem;
   border: 3px solid ${theme.colors.primary};
@@ -26,6 +29,9 @@ const SectionSommaire = styled("div")`
 
   .list-sommaire {
     margin: 4rem 0 0 10rem;
+    @media (max-width: ${theme.breakpoints.xs}) {
+      margin: 4rem 0 0 2rem;
+    }
   }
 
   ol {

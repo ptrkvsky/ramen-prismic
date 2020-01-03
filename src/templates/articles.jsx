@@ -20,20 +20,37 @@ const HeroBanner = styled("section")`
   .hero_banner {
     min-height: 60vh;
   }
+
+  @media (max-width: ${theme.breakpoints.m}) {
+    min-height: 50vh;
+    .hero_banner {
+      min-height: 50vh;
+    }
+  }
 `
 
 const ContentRecette = styled("section")`
   margin: 0 auto;
   max-width: ${theme.maxWidth};
   padding-top: 30vh;
+  @media (max-width: ${theme.breakpoints.m}) {
+    padding: 40vh 5rem 5rem;
+  }
+  @media (max-width: ${theme.breakpoints.xs}) {
+    padding: 40vh 1rem 1rem;
+  }
 `
 
 const GridPresentationRecette = styled("div")`
   display: grid;
   justify-content: space-between;
   grid-template-columns: 40% 40%;
-
   padding-bottom: 7rem;
+  @media (max-width: ${theme.breakpoints.m}) {
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+    padding-bottom: 0rem;
+  }
 `
 
 const PresentationRecette = styled("section")`
@@ -41,6 +58,9 @@ const PresentationRecette = styled("section")`
   padding: 3.75rem 4rem;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
   border-radius: 0.25rem;
+  @media (max-width: ${theme.breakpoints.m}) {
+    padding: 1.75rem 2rem;
+  }
 
   .titre-recette {
     color: ${theme.colors.primary};
@@ -74,6 +94,9 @@ const Citation = styled("div")`
   position: absolute;
   bottom: 0;
   right: 0;
+  @media (max-width: ${theme.breakpoints.m}) {
+    position: relative;
+  }
 
   display: inline-block;
   padding: 2rem 2.5rem;
