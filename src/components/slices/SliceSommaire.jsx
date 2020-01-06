@@ -11,6 +11,7 @@ const SectionSommaire = styled("div")`
   margin-right: auto;
   margin-left: auto;
   @media (max-width: ${theme.breakpoints.m}) {
+    padding: 2rem;
     margin-bottom: 5rem;
   }
 
@@ -61,10 +62,11 @@ export default ({ slice }) => {
           {slice.items.map(function(item) {
             return (
               <li>
+                {console.log(item.item_sommaire)}
                 <Link
                   className="item-sommaire"
                   activeClass="active"
-                  to={item.id_item_sommaire}
+                  to={item.item_sommaire}
                   spy={true}
                   smooth={true}
                   offset={-70}

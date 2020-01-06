@@ -7,7 +7,6 @@ import SliceImageGauche from "../slices/SliceImageGauche"
 import SliceImage from "../slices/SliceImage"
 
 const RecetteSlices = ({ slices }) => {
-  console.log(slices)
   if (slices !== undefined) {
     return slices.map((slice, index) => {
       const res = (() => {

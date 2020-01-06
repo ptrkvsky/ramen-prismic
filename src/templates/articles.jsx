@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { Link } from "react-scroll"
 
 import styled from "@emotion/styled"
 import theme from "../styles/theme"
@@ -32,7 +33,20 @@ const HeroBanner = styled("section")`
 const ContentRecette = styled("section")`
   margin: 0 auto;
   max-width: ${theme.maxWidth};
-  padding-top: 30vh;
+  padding: 30vh 0 7rem 0;
+  font-size: 2.4rem;
+
+  p {
+    margin-bottom: 3.5rem;
+    line-height: 1.5;
+  }
+
+  ol {
+    list-style: decimal;
+    margin-bottom: 3.5rem;
+    line-height: 1.5;
+  }
+
   @media (max-width: ${theme.breakpoints.m}) {
     padding: 40vh 5rem 5rem;
   }
@@ -113,12 +127,9 @@ const Citation = styled("div")`
 
 const Article = ({ data: { prismicArticle } }) => {
   const { data } = prismicArticle
-  {
-    /* console.log(data) */
-  }
   return (
     <Layout>
-      <SEO title={data.titre_recette.text} />
+      <SEO title={`🍜 ${data.titre_recette.text}`} />
       <HeroBanner>
         <BackgroundImage
           Tag="div"
@@ -145,7 +156,20 @@ const Article = ({ data: { prismicArticle } }) => {
             </Citation>
           </ConteneurCitation>
         </GridPresentationRecette>
-
+        <p>
+          Trop de blabla ? Retrouve la recette en quelques lignes en{" "}
+          <Link
+            className="item-sommaire"
+            activeClass="active"
+            to="resume"
+            spy={true}
+            smooth={true}
+            offset={-70}
+            duration={500}
+          >
+            bas de page.
+          </Link>
+        </p>
         <RecetteSlices slices={data.body} />
       </ContentRecette>
     </Layout>
