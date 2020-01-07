@@ -13,6 +13,8 @@ import PropTypes from "prop-types"
 import RecetteSlices from "../components/recettes/RecetteSlices"
 import FormContact from "../components/recettes/RecetteFormContact"
 
+import "../styles/form.scss"
+
 const HeroBanner = styled("section")`
   position: absolute;
   z-index: -1;

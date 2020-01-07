@@ -1,0 +1,201 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to form component.
+// -----------------------------------------------------------------------------
+.form-comment {
+  width: 100%;
+  max-width: 980px;
+  display: block;
+  margin: 0 auto;
+}
+
+.block-item-form {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  // @include shift(all, 0.3s, ease-in-out);
+
+  &.valid-input {
+    margin-top: 20px;
+  }
+
+  .item-form {
+    display: block;
+    padding-top: 20px;
+    width: 100%;
+    height: 100%;
+    color: #595f6e;
+    border: none;
+    outline: none;
+
+    &:focus + .label-name .content-name,
+    &:valid + .label-name .content-name {
+      font-size: 14px;
+      color: #5fa8d3;
+    }
+    /* moving the bottom border */
+    &:focus + .label-name:after,
+    &:valid + .label-name:after {
+      transform: translateX(0%);
+    }
+    /* moving the label on focus for ipt text */
+    &.item-input:focus + .label-name .content-name,
+    &.item-input:valid + .label-name .content-name {
+      transform: translateY(-44px);
+    }
+    /* moving the label on focus for textarea */
+    &.item-textarea:focus + .label-name .content-name,
+    &.item-textarea:valid + .label-name .content-name {
+      transform: translateY(-37px);
+    }
+  }
+
+  .label-name {
+    position: absolute;
+    left: 0px;
+    bottom: 5px;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+    pointer-events: none;
+    border-bottom: 1px solid red;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0px;
+      bottom: -1px;
+      height: 100%;
+      width: 100%;
+      border-bottom: 3px solid #5fa8d3;
+      transform: translateX(-100%);
+      // @include shift(all, 0.3s, ease-in-out);
+    }
+  }
+
+  .item-input {
+    min-height: 80px;
+  }
+
+  .item-textarea {
+    min-height: 150px;
+  }
+
+  .item-input + .label-name .content-name {
+    bottom: 0px;
+  }
+
+  .item-textarea + .label-name .content-name {
+    top: 40px;
+  }
+
+  .content-name {
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
+    color: black;
+    font-style: italic;
+    font-size: 15px;
+    // @include shift(all, 0.3s, ease-in-out);
+  }
+}
+
+.submit {
+  margin-top: 40px;
+  border: none;
+  background: gray;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  // @include shift(all, 0.3s, ease-in-out);
+
+  &.valid-submit {
+    background-color: red;
+  }
+}
+
+.heart {
+  position: relative;
+  display: none;
+  top: 17px;
+  margin-left: 25px;
+  width: 60px;
+  height: 50px;
+  // @include shift(all, 0.3s, ease-in-out);
+  &.animated {
+    display: inline-block;
+    animation: heartbeat 1.5s infinite;
+  }
+}
+
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  left: 30px;
+  top: 0;
+  width: 30px;
+  height: 50px;
+  background: #fff;
+  -moz-border-radius: 30px 30px 0 0;
+  border-radius: 30px 30px 0 0;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform-origin: 0 100%;
+  -moz-transform-origin: 0 100%;
+  -ms-transform-origin: 0 100%;
+  -o-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+}
+.heart:after {
+  left: 0;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 100% 100%;
+  -moz-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  -o-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+}
+
+.heart.animated:before,
+.heart.animated:after {
+  background: red;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(0.75);
+  }
+  20% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.75);
+  }
+  60% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(0.75);
+  }
+  100% {
+    transform: scale(0.75);
+  }
+}
+
+.sad {
+  display: inline-block;
+  margin-left: 25px;
+  &.hide {
+    display: none;
+  }
+}
