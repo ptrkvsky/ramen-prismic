@@ -1,6 +1,13 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to form component.
 // -----------------------------------------------------------------------------
+//usage: @include shift([property],[duration],[easing]);
+@mixin shift($property: all, $duration: 0.3s, $ease: linear) {
+  -webkit-transition: $property $duration $ease;
+  -moz-transition: $property $duration $ease;
+  -o-transition: $property $duration $ease;
+  transition: $property $duration $ease;
+}
 .form-comment {
   width: 100%;
   max-width: 980px;
@@ -12,7 +19,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  // @include shift(all, 0.3s, ease-in-out);
+  @include shift(all, 0.3s, ease-in-out);
 
   &.valid-input {
     margin-top: 20px;
@@ -68,7 +75,7 @@
       width: 100%;
       border-bottom: 3px solid #5fa8d3;
       transform: translateX(-100%);
-      // @include shift(all, 0.3s, ease-in-out);
+      @include shift(all, 0.3s, ease-in-out);
     }
   }
 
@@ -95,7 +102,7 @@
     color: black;
     font-style: italic;
     font-size: 15px;
-    // @include shift(all, 0.3s, ease-in-out);
+    @include shift(all, 0.3s, ease-in-out);
   }
 }
 
@@ -109,7 +116,7 @@
   cursor: pointer;
   padding: 10px 20px;
   border-radius: 5px;
-  // @include shift(all, 0.3s, ease-in-out);
+  @include shift(all, 0.3s, ease-in-out);
 
   &.valid-submit {
     background-color: red;
@@ -123,7 +130,7 @@
   margin-left: 25px;
   width: 60px;
   height: 50px;
-  // @include shift(all, 0.3s, ease-in-out);
+  @include shift(all, 0.3s, ease-in-out);
   &.animated {
     display: inline-block;
     animation: heartbeat 1.5s infinite;
