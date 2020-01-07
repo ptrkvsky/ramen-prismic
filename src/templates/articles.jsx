@@ -11,6 +11,7 @@ import SEO from "../components/seo"
 import PropTypes from "prop-types"
 
 import RecetteSlices from "../components/recettes/RecetteSlices"
+import FormContact from "../components/recettes/RecetteFormContact"
 
 const HeroBanner = styled("section")`
   position: absolute;
@@ -45,6 +46,9 @@ const ContentRecette = styled("section")`
     list-style: decimal;
     margin-bottom: 3.5rem;
     line-height: 1.5;
+    @media (max-width: ${theme.breakpoints.xs}) {
+      margin-left: 1.6rem;
+    }
   }
 
   @media (max-width: ${theme.breakpoints.m}) {
@@ -171,6 +175,7 @@ const Article = ({ data: { prismicArticle } }) => {
           </Link>
         </p>
         <RecetteSlices slices={data.body} />
+        <FormContact formName={data.titre_recette.text} />
       </ContentRecette>
     </Layout>
   )
