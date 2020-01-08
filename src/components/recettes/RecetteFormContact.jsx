@@ -1,148 +1,224 @@
 import React from "react"
-class FormContact extends React.Component {
+import axios from "axios"
+import * as qs from "query-string"
+import theme from "../../styles/theme"
+
+import styled from "@emotion/styled"
+
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&")
+}
+
+const ContactWrapper = styled("div")`
+  margin-top: 60px;
+  padding: 60px;
+  width: 800px;
+  max-width: 100%;
+  border-top: 10px solid ${theme.colors.paragraph};
+`
+
+const Hidden = styled("p")`
+  display: none;
+`
+
+const Title = styled("h2")`
+  margin: 0 0 40px 0;
+  text-align: center;
+  font-weight: 200;
+  font-style: italic;
+  font-size: 80px;
+  color: #000;
+`
+const InputTxt = styled("input")`
+  display: block;
+  padding-left: 20px;
+  width: 100%;
+  height: 36px;
+  border-width: 0 0 2px 0;
+  border-color: #000;
+  font-size: 18px;
+  line-height: 26px;
+  &:focus {
+    outline: none;
+  }
+  &:focus,
+  &.not-empty {
+    + .label {
+      transform: translateY(-24px);
+    }
+  }
+`
+
+const Label = styled("label")`
+  position: absolute;
+  left: 20px;
+  bottom: 11px;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #888;
+  cursor: text;
+  transition: transform 0.2s ease-in-out;
+`
+
+const FormField = styled("div")`
+  position: relative;
+  margin: 32px 0;
+`
+const FormResponse = styled("p")`
+  text-align: center;
+  font-weight: bold;
+`
+
+const SubmitButton = styled("input")`
+  display: inline-block;
+  padding: 10px 15px;
+  margin-top: 40px;
+  color: #fff;
+  font-weight: 200;
+  font-size: 18px;
+  text-decoration: none;
+  border: none;
+  background: #000;
+  transition: background-color 0.3s linear;
+  cursor: pointer;
+  &:hover {
+    background-color: red;
+  }
+`
+
+class SectionContact extends React.Component {
+  static HandleKey(event) {
+    // J'ajoute une classe si mon champ est vide yes
+    const target = event.target
+
+    if (target.value.trim()) {
+      target.classList.add("not-empty")
+    } else {
+      target.classList.remove("not-empty")
+    }
+  }
+
   constructor(props) {
     super(props)
-
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleFocus = this.handleFocus.bind(this)
-    this.handleBlur = this.handleBlur.bind(this)
-
-    this.state = {
-      formControls: {
-        pseudo: {
-          value: "",
-        },
-        message: {
-          value: "",
-        },
-      },
-    }
-  }
-
-  handleChange(event) {
-    const name = event.target.name
-    const value = event.target.value
-    this.setState({
-      formControls: {
-        ...this.state.formControls,
-        [name]: {
-          ...this.state.formControls[name],
-          value,
-        },
-      },
-    })
-    const valueTrimed = event.target.value.trim()
-
-    //We try to know what previous elt is, if its "block item form", its not the first elt so we can add a margin
-    const prevElement = event.target.parentNode.previousSibling
-
-    //if input is not empty
-    if (valueTrimed && prevElement.classList.contains("block-item-form")) {
-      event.target.parentNode.classList.add("valid-input")
-    } else {
-      //event.target.parentNode.classList.remove("valid-input");
-    }
-
-    //Finally we test our states to know if the whole form is valid
-    if (
-      document.getElementById("message").value.trim() &&
-      document.getElementById("pseudo").value.trim()
-    ) {
-      document.querySelector(".submit").classList.add("valid-submit")
-      document.getElementById("heart").classList.add("animated")
-      document.getElementById("sad").classList.add("hide")
-    } else {
-      document.querySelector(".submit").classList.remove("valid-submit")
-      document.getElementById("heart").classList.remove("animated")
-      //document.getElementById('sad').classList.remove("hide")
-    }
-  }
-
-  handleFocus(event) {
-    event.target.parentNode.classList.add("valid-input")
-  }
-
-  handleBlur(event) {
-    //If field is empty when i loose focus, i remove the class adding space
-    const value = event.target.value.trim()
-    if (!value) {
-      event.target.parentNode.classList.remove("valid-input")
-    }
+    this.domRef = React.createRef()
+    this.state = { feedbackMsg: null }
   }
 
   handleSubmit(event) {
-    if (
-      document.getElementById("message").value.trim() &&
-      document.getElementById("pseudo").value.trim()
-    ) {
-      document.getElementById("sad").classList.add("hide")
-    } else {
-      document.getElementById("sad").classList.remove("hide")
-      event.preventDefault()
-    }
+    const formData = {}
+    Object.keys(this.refs).map(key => (formData[key] = this.refs[key].value))
+
+    this.setState({
+      feedbackMsg: "Form could not be submitted.",
+    })
+
+    event.preventDefault()
+    const contactForm = document.querySelector("#contact-form")
+    fetch(contactForm.getAttribute("action"), {
+      method: "POST",
+      headers: {
+        Accept: "application/x-www-form-urlencoded;charset=UTF-8",
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+      },
+      body: qs.stringify(formData),
+    }).then(res => {
+      if (res) {
+        this.setState({
+          feedbackMsg: "Merci votre message a bien été transmis.",
+        })
+      } else {
+        this.setState({
+          feedbackMsg: "Terrible nouvelle votre message n'a pu être transmis.",
+        })
+      }
+    })
   }
 
   render() {
+    const { feedbackMsg } = this.state
     return (
-      <form
-        onSubmit={this.handleSubmit}
-        className="form-comment"
-        action="/thankyou"
-        name={this.props.formName}
-        method="POST"
-        netlify-honeypot="bot-field"
-        data-netlify="true"
-      >
-        <input
-          className=""
-          type="hidden"
-          name="form-name"
-          value={this.props.formName}
-        />
-        <p class="d-none">
-          <label>
-            Pour mes amis les robots : <input name="bot-field" />
-          </label>
-        </p>
+      <div className="section section3 contact" data-anchor="contact">
+        <ContactWrapper>
+          <form
+            action="/"
+            id="contact-form"
+            ref={this.domRef}
+            name="Contact Form"
+            method="POST"
+            data-netlify="true"
+            onSubmit={event => this.handleSubmit(event)}
+            netlify-honeypot="bot-field"
+          >
+            <Hidden>
+              <label>
+                Ne pas remplir si pas humain :
+                <input name="bot-field" />
+              </label>
+            </Hidden>
+            <input
+              ref="form-name"
+              type="hidden"
+              name="form-name"
+              value="Contact Form"
+            />
 
-        <div className="block-item-form">
-          <input
-            id="pseudo"
-            value={this.state.formControls.pseudo.value}
-            onChange={this.handleChange}
-            className="item-form item-input"
-            name="pseudo"
-            required
-            type="text"
-            onChange={this.handleChange}
-          />
-          <label className="label-name">
-            <span className="content-name">Mon pseudo sympa</span>
-          </label>
-        </div>
-
-        <div className="block-item-form">
-          <textarea
-            id="message"
-            onBlur={this.handleBlur}
-            onFocus={this.handleFocus}
-            onChange={this.handleChange}
-            className="item-form item-textarea"
-            name="message"
-            required
-          ></textarea>
-          <label className="label-name">
-            <span className="content-name">Mon message d'amour</span>
-          </label>
-        </div>
-        <input type="submit" className="submit" value="Envoyer" />
-        <div className="heart" id="heart"></div>
-        <div className="sad hide" id="sad">
-          (⌯˃̶᷄ ﹏ ˂̶᷄⌯)ﾟ
-        </div>
-      </form>
+            <Title>Contact</Title>
+            {feedbackMsg && <FormResponse>{feedbackMsg}</FormResponse>}
+            <FormField>
+              <InputTxt
+                ref="form-name"
+                id="name"
+                name="name"
+                className="input-text js-input"
+                type="text"
+                required
+                onKeyUp={SectionContact.HandleKey}
+              />
+              <Label className="label" htmlFor="name">
+                Nom
+              </Label>
+            </FormField>
+            <FormField>
+              <InputTxt
+                ref="email"
+                onKeyUp={SectionContact.HandleKey}
+                id="email"
+                name="email"
+                type="email"
+                required
+              />
+              <Label className="label" htmlFor="email">
+                E-mail
+              </Label>
+            </FormField>
+            <FormField>
+              <InputTxt
+                ref="message"
+                name="message"
+                onKeyUp={SectionContact.HandleKey}
+                id="message"
+                type="text"
+                required
+              />
+              <Label className="label" htmlFor="message">
+                Votre message
+              </Label>
+            </FormField>
+            <FormField>
+              <SubmitButton
+                className="submit-btn"
+                type="submit"
+                value="Envoyer"
+              />
+            </FormField>
+          </form>
+        </ContactWrapper>
+      </div>
     )
   }
 }
-export default FormContact
+
+export default SectionContact
