@@ -147,7 +147,7 @@ class SectionContact extends React.Component {
             action={document.URL}
             id="contact-form"
             ref={this.domRef}
-            name="Contact Form"
+            name={`${this.props.formName}`}
             method="POST"
             data-netlify="true"
             onSubmit={event => this.handleSubmit(event)}
