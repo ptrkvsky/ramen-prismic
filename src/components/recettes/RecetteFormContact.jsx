@@ -117,6 +117,7 @@ class SectionContact extends React.Component {
 
     event.preventDefault()
     const contactForm = document.querySelector("#contact-form")
+    console.log("form data l120", formData)
     fetch(contactForm.getAttribute("action"), {
       method: "POST",
       headers: {
@@ -143,7 +144,7 @@ class SectionContact extends React.Component {
       <div className="section section3 contact" data-anchor="contact">
         <ContactWrapper>
           <form
-            action="/"
+            action={document.URL}
             id="contact-form"
             ref={this.domRef}
             name="Contact Form"
