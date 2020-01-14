@@ -141,7 +141,16 @@ class SectionContact extends React.Component {
   constructor(props) {
     super(props)
     this.domRef = React.createRef()
-    this.state = { feedbackMsg: null }
+    this.state = {
+      feedbackMsg: null,
+      url: null,
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      url: document.url,
+    })
   }
 
   handleSubmit(event) {
@@ -181,7 +190,7 @@ class SectionContact extends React.Component {
       <div className="section section3 contact" data-anchor="contact">
         <ContactWrapper>
           <form
-            action={document.URL}
+            action={this.state.url}
             id="contact-form"
             ref={this.domRef}
             name={`${this.props.formName}`}
