@@ -5,9 +5,18 @@ import React from "react"
 import styled from "@emotion/styled"
 import theme from "../styles/theme"
 
+import { myContext } from "../../provider"
+
 const BlocHeader = styled("header")`
-  background-color: ${theme.colors.bgSnd};
-  border-bottom: 10px solid ${theme.colors.primary};
+  .lightTheme & {
+    background-color: ${theme.colors.light.bg};
+    border-bottom: 10px solid ${theme.colors.light.primary};
+  }
+
+  .darkTheme & {
+    background-color: ${theme.colors.dark.bgAlt};
+    border-bottom: 10px solid ${theme.colors.dark.primary};
+  }
 `
 const ContentCenter = styled("div")`
   margin: 0 auto;
@@ -19,7 +28,13 @@ const MainTitle = styled("div")`
   margin: 0;
   font-family: "Bangers";
   a {
-    color: ${theme.colors.primary};
+    .lightTheme & {
+      color: ${theme.colors.light.primary};
+    }
+
+    .darkTheme & {
+      color: ${theme.colors.dark.primary};
+    }
     font-size: 4rem;
     font-style: normal;
     :hover {
@@ -35,13 +50,20 @@ const MainTitle = styled("div")`
 `
 
 const Header = ({ siteTitle }) => (
-  <BlocHeader>
-    <ContentCenter>
-      <MainTitle>
-        <Link to="/">{siteTitle}</Link>
-      </MainTitle>
-    </ContentCenter>
-  </BlocHeader>
+  <myContext.Consumer>
+    {context => (
+      <BlocHeader>
+        <ContentCenter>
+          <MainTitle>
+            <Link to="/">{siteTitle}</Link>
+            <button onClick={() => context.changeTheme()}>
+              {context.isDark ? "Light" : "Dark"}
+            </button>
+          </MainTitle>
+        </ContentCenter>
+      </BlocHeader>
+    )}
+  </myContext.Consumer>
 )
 
 Header.propTypes = {

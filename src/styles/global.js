@@ -10,7 +10,7 @@ const globalStyles = css`
   h4,
   h5,
   h6 {
-    color: ${theme.colors.headline};
+    color: ${theme.colors.light.headline};
   }
   html {
     -webkit-font-smoothing: antialiased;
@@ -19,21 +19,34 @@ const globalStyles = css`
   }
   body {
     font-family: ${theme.fonts.primary};
-    color: ${theme.colors.paragraph};
-    background-color: ${theme.colors.bg};
     font-size: 1.6rem;
     @media (max-width: ${theme.breakpoints.m}) {
       font-size: 1.4rem;
     }
   }
 
+  .globalStyle {
+    &.lightTheme {
+      color: ${theme.colors.light.paragraph};
+      background-color: ${theme.colors.light.bg};
+    }
+    &.darkTheme {
+      color: ${theme.colors.dark.paragraph};
+      background-color: ${theme.colors.dark.bg};
+    }
+  }
+
   ::selection {
-    color: ${theme.colors.bg};
-    background-color: ${theme.colors.primary};
+    color: ${theme.colors.light.bg};
+    background-color: ${theme.colors.light.primary};
+  }
+
+  * {
+    transition: background-color 0.4s ease-in-out;
   }
 
   a {
-    color: ${theme.colors.primary};
+    color: ${theme.colors.light.primary};
     transition: all 0.4s ease-in-out;
     text-decoration: none;
     font-weight: 700;
@@ -74,6 +87,7 @@ const globalStyles = css`
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
   }
+
   .border-bottom-radius {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;

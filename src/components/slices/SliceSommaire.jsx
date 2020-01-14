@@ -16,7 +16,7 @@ const SectionSommaire = styled("div")`
   }
 
   border-radius: 1rem;
-  border: 3px solid ${theme.colors.primary};
+  border: 3px solid ${theme.colors.light.primary};
 
   font-size: 2.4rem;
 
@@ -40,13 +40,23 @@ const SectionSommaire = styled("div")`
   }
 
   .item-sommaire {
-    color: ${theme.colors.paragraph};
     font-size: 2.4rem;
     line-height: 1.5;
     font-weight: normal;
     font-style: normal;
+    .lightTheme & {
+      color: ${theme.colors.light.paragraph};
+    }
+    .darkTheme & {
+      color: ${theme.colors.dark.paragraph};
+    }
     &:hover {
-      color: ${theme.colors.primary};
+      .lightTheme & {
+        color: ${theme.colors.light.primary};
+      }
+      .darkTheme & {
+        color: ${theme.colors.dark.primary};
+      }
       text-decoration: none;
       cursor: pointer;
     }

@@ -16,7 +16,14 @@ const ContactWrapper = styled("div")`
   padding: 60px;
   width: 800px;
   max-width: 100%;
-  border-top: 10px solid ${theme.colors.paragraph};
+
+  .lightTheme & {
+    border-top: 10px solid ${theme.colors.light.paragraph};
+  }
+
+  .darkTheme & {
+    border-top: 10px solid ${theme.colors.dark.paragraph};
+  }
 `
 
 const Hidden = styled("p")`
@@ -29,7 +36,13 @@ const Title = styled("h2")`
   font-weight: 200;
   font-style: italic;
   font-size: 80px;
-  color: #000;
+  .lightTheme & {
+    color: ${theme.colors.light.paragraph};
+  }
+
+  .darkTheme & {
+    color: ${theme.colors.dark.paragraph};
+  }
 `
 const InputTxt = styled("input")`
   display: block;
@@ -37,9 +50,15 @@ const InputTxt = styled("input")`
   width: 100%;
   height: 36px;
   border-width: 0 0 2px 0;
-  border-color: #000;
   font-size: 18px;
   line-height: 26px;
+  .lightTheme & {
+    border-color: ${theme.colors.light.paragraph};
+  }
+
+  .darkTheme & {
+    border-color: ${theme.colors.dark.paragraph};
+  }
   &:focus {
     outline: none;
   }
@@ -76,16 +95,34 @@ const SubmitButton = styled("input")`
   display: inline-block;
   padding: 10px 15px;
   margin-top: 40px;
-  color: #fff;
   font-weight: 200;
   font-size: 18px;
   text-decoration: none;
   border: none;
-  background: #000;
+
   transition: background-color 0.3s linear;
   cursor: pointer;
+
+  .lightTheme & {
+    color: ${theme.colors.light.paragraph};
+    background-color: ${theme.colors.light.primary};
+  }
+
+  .darkTheme & {
+    color: ${theme.colors.dark.paragraph};
+    background-color: ${theme.colors.dark.primary};
+  }
+
   &:hover {
-    background-color: red;
+    .lightTheme & {
+      color: ${theme.colors.light.paragraph};
+      background-color: ${theme.colors.light.bg};
+    }
+
+    .darkTheme & {
+      color: ${theme.colors.dark.paragraph};
+      background-color: ${theme.colors.dark.bg};
+    }
   }
 `
 

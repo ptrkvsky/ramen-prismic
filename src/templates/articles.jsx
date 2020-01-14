@@ -17,7 +17,6 @@ import "../styles/form.scss"
 
 const HeroBanner = styled("section")`
   position: absolute;
-  z-index: -1;
   width: 100%;
   min-height: 60vh;
 
@@ -34,6 +33,8 @@ const HeroBanner = styled("section")`
 `
 
 const ContentRecette = styled("section")`
+  position: relative;
+  z-index: 10;
   margin: 0 auto;
   max-width: ${theme.maxWidth};
   padding: 30vh 0 7rem 0;
@@ -66,6 +67,7 @@ const GridPresentationRecette = styled("div")`
   justify-content: space-between;
   grid-template-columns: 40% 40%;
   padding-bottom: 7rem;
+
   @media (max-width: ${theme.breakpoints.m}) {
     grid-template-rows: auto;
     grid-template-columns: auto;
@@ -74,28 +76,45 @@ const GridPresentationRecette = styled("div")`
 `
 
 const PresentationRecette = styled("section")`
-  background-color: ${theme.colors.bg};
   padding: 3.75rem 4rem;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
   border-radius: 0.25rem;
+
+  .lightTheme & {
+    background-color: ${theme.colors.light.bg};
+  }
+  .darkTheme & {
+    background-color: ${theme.colors.dark.bg};
+  }
+
   @media (max-width: ${theme.breakpoints.m}) {
     padding: 1.75rem 2rem;
   }
 
   .titre-recette {
-    color: ${theme.colors.primary};
     font-size: 5rem;
     line-height: 5.5rem;
     font-family: ${theme.fonts.secondary};
     font-weight: 500;
     text-transform: uppercase;
+    .lightTheme & {
+      color: ${theme.colors.light.primary};
+    }
+    .darkTheme & {
+      color: ${theme.colors.dark.primary};
+    }
   }
 
   .sous-titre {
     margin-top: 1.75rem;
 
-    color: ${theme.colors.paragraph};
     font-size: 3.2rem;
+    .lightTheme & {
+      color: ${theme.colors.light.paragraph};
+    }
+    .darkTheme & {
+      color: ${theme.colors.dark.paragraph};
+    }
   }
 
   .paragraph-card {
@@ -114,6 +133,7 @@ const Citation = styled("div")`
   position: absolute;
   bottom: 0;
   right: 0;
+
   @media (max-width: ${theme.breakpoints.m}) {
     position: relative;
   }
@@ -121,12 +141,18 @@ const Citation = styled("div")`
   display: inline-block;
   padding: 2rem 2.5rem;
 
-  color: ${theme.colors.paragraph};
   font-size: 2.5rem;
   font-family: ${theme.fonts.primary};
   line-height: 1.5;
 
-  /* box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175); */
+  .lightTheme & {
+    color: ${theme.colors.light.paragraph};
+  }
+
+  .darkTheme & {
+    color: ${theme.colors.dark.paragraph};
+  }
+
   border-radius: 0.25rem;
   text-align: center;
 `
