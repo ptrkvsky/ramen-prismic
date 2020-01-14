@@ -7,6 +7,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
+    "@flive/react-sigfox-brand": "^1.2.2",
     "axios": "^0.19.1",
     "emotion-theming": "^10.0.19",
     "gatsby": "^2.18.11",
@@ -31,8 +32,10 @@
     "gatsby-source-prismic-graphql": "^3.3.1",
     "gatsby-transformer-sharp": "^2.3.9",
     "gsap": "^3.0.4",
+    "install": "^0.13.0",
     "intersection-observer": "^0.7.0",
     "node-sass": "^4.13.0",
+    "npm": "^6.13.4",
     "prismic-reactjs": "^1.1.2",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
