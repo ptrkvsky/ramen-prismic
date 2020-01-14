@@ -17,7 +17,8 @@ import { theme, globalStyles } from "../styles"
 
 import Header from "./header"
 import Footer from "./footer"
-// import "./layout.css"
+
+import { myContext } from '../../provider';
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -31,14 +32,22 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <Global styles={globalStyles} />
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <main>{children}</main>
-        <Footer />
-      </ThemeProvider>
-    </>
+    <myContext.Consumer>
+      {context => (
+        <React.Fragment>
+          <div className={context.isDark ? 'darkTheme' : 'lightTheme'}>
+            <>
+              <ThemeProvider theme={theme}>
+                <Global styles={globalStyles} />
+                <Header siteTitle={data.site.siteMetadata.title} />
+                <main>{children}</main>
+                <Footer />
+              </ThemeProvider>
+            </>
+          </div>
+        </React.Fragment>
+      )}
+    </myContext.Consumer>
   )
 }
 

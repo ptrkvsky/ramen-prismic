@@ -10,7 +10,22 @@ const theme = {
 
     bg: "#fefbf4",
     bgSnd: "#fdf6e4",
+    light:{
+      primary: "#d32f2f", // Marron
+      secondary: "#ec002a", // Rouge
+      tertiary: "#f6f4df", //Blanc
+      bgFooter: "#9b1f1f",
+      paragraph: "#3a2828",
+      headline: "#d32f2f",
+      bg: "#fefbf4",
+      bgSnd: "#fdf6e4",
+    },
+    dark:{
+      headline: "red",
+      bg: "#000",
+    },
   },
+
   fonts: {
     primary: "Oswald",
     secondary: "Poppins, sans-serif",

@@ -12,11 +12,19 @@ import SEO from "../components/seo"
 
 import RecetteCard from "../components/recettes/RecetteCard"
 
+import { myContext } from '../../provider';
+
 /*
  * SECTION 1
  */
 const SectionPresentation = styled("section")`
   padding: 0 0 7rem;
+  .lightTheme & {
+    background-color: ${theme.colors.light.bg}
+  }
+  .darkTheme & {
+    background-color: ${theme.colors.dark.bg}
+  }
 `
 const ContentPresentation = styled("div")`
   display: flex;
@@ -49,6 +57,14 @@ const TitrePresentation = styled("h1")`
   font-size: 3.5rem;
   color: ${theme.colors.headline};
   line-height: 5rem;
+
+  .lightTheme & {
+    color: ${theme.colors.light.headline}
+  }
+  
+  .darkTheme & {
+    ${theme.colors.dark.headline}
+  }
 `
 
 const ParaPresentation = styled("p")`
@@ -110,12 +126,18 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
+    <myContext.Consumer>
+      {context => (
+        <React.Fragment>
+          
       <SEO title="🍜 El famoso meilleur site de ramen" />
 
       <SectionPresentation>
         <ContentPresentation>
           <div className="col col-gauche">
             <TitrePresentation>
+            <h1>{context.isDark ? "Dark Theme" : "Light Theme"}</h1>
+            <button onClick={() => context.changeTheme()}>{context.isDark ? "Light" : "Dark"}</button>
               Tout ce qu'il faut savoir pour réaliser des ramens !
               Test branch
             </TitrePresentation>
@@ -165,6 +187,9 @@ const IndexPage = ({ data }) => {
         Go to page 2
       </TransitionLink>
       */}
+        </React.Fragment>
+      )}
+    </myContext.Consumer>
     </Layout>
   )
 }
