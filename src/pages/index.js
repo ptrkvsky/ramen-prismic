@@ -12,7 +12,7 @@ import SEO from "../components/seo"
 
 import RecetteCard from "../components/recettes/RecetteCard"
 
-import { myContext } from '../../provider';
+import { myContext } from "../../provider"
 
 /*
  * SECTION 1
@@ -20,10 +20,10 @@ import { myContext } from '../../provider';
 const SectionPresentation = styled("section")`
   padding: 0 0 7rem;
   .lightTheme & {
-    background-color: ${theme.colors.light.bg}
+    background-color: ${theme.colors.light.bg};
   }
   .darkTheme & {
-    background-color: ${theme.colors.dark.bg}
+    background-color: ${theme.colors.dark.bg};
   }
 `
 const ContentPresentation = styled("div")`
@@ -55,15 +55,14 @@ const ContentPresentation = styled("div")`
 const TitrePresentation = styled("h1")`
   font-family: ${theme.fonts.secondary};
   font-size: 3.5rem;
-  color: ${theme.colors.headline};
   line-height: 5rem;
 
   .lightTheme & {
-    color: ${theme.colors.light.headline}
+    color: ${theme.colors.light.headline};
   }
-  
+
   .darkTheme & {
-    ${theme.colors.dark.headline}
+    color: ${theme.colors.dark.headline};
   }
 `
 
@@ -72,9 +71,16 @@ const ParaPresentation = styled("p")`
   font-size: 2rem;
   line-height: 3.5rem;
   font-weight: 400;
-  color: ${theme.colors.paragraph};
   text-align: justify;
   max-width: 500px;
+
+  .lightTheme & {
+    color: ${theme.colors.light.paragraph};
+  }
+
+  .darkTheme & {
+    color: ${theme.colors.dark.paragraph};
+  }
 `
 
 /*
@@ -104,7 +110,14 @@ const ConteneurListing = styled("div")`
 const TitreListing = styled("h2")`
   margin-bottom: 5rem;
   font-size: 3rem;
-  color: ${theme.colors.tertiary};
+
+  .lightTheme & {
+    color: ${theme.colors.light.secondary};
+  }
+
+  .darkTheme & {
+    color: ${theme.colors.dark.secondary};
+  }
 `
 
 const TRANSITION_LENGTH = 1.5
@@ -126,59 +139,60 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-    <myContext.Consumer>
-      {context => (
-        <React.Fragment>
-          
-      <SEO title="🍜 El famoso meilleur site de ramen" />
+      <myContext.Consumer>
+        {context => (
+          <React.Fragment>
+            <SEO title="🍜 El famoso meilleur site de ramen" />
 
-      <SectionPresentation>
-        <ContentPresentation>
-          <div className="col col-gauche">
-            <TitrePresentation>
-            <h1>{context.isDark ? "Dark Theme" : "Light Theme"}</h1>
-            <button onClick={() => context.changeTheme()}>{context.isDark ? "Light" : "Dark"}</button>
-              Tout ce qu'il faut savoir pour réaliser des ramens !
-              Test branch
-            </TitrePresentation>
-            <ParaPresentation>
-              Ce blog a pour vocation de vous faire découvrir le monde
-              merveilleux des ramens, ce plat japonais bien souvent méconnu en
-              France. <br />
-              Vous trouverez ici un ensemble de{" "}
-              <span className="bold">recettes</span> que j'ai pu expérimenter au
-              fil des ans.
-            </ParaPresentation>
-          </div>
-          <div className="col col-droite">
-            <Img
-              fluid={data.illustration.childImageSharp.fluid}
-              alt="Illustration bol de ramen"
-              title="Illustration bol de ramen"
-            />
-          </div>
-        </ContentPresentation>
-      </SectionPresentation>
-      <BackgroundImage
-        Tag="section"
-        fluid={data.background_listing.childImageSharp.fluid}
-      >
-        <SectionListing className="content-center">
-          <TitreListing>Les dernières recettes pour vos ramens</TitreListing>
-          <ConteneurListing>
-            {recettes.map((recette, i) => (
-              <RecetteCard
-                key={i}
-                titreRecette={recette.data.titre_recette.text}
-                descriptionCourte={recette.data.description_courte.html}
-                vignette={recette.data.vignette.localFile.childImageSharp.fixed}
-                uid={recette.uid}
-              />
-            ))}
-          </ConteneurListing>
-        </SectionListing>
-      </BackgroundImage>
-      {/* 
+            <SectionPresentation>
+              <ContentPresentation>
+                <div className="col col-gauche">
+                  <TitrePresentation>
+                    Tout ce qu'il faut savoir pour réaliser des ramens ! Test
+                    branch
+                  </TitrePresentation>
+                  <ParaPresentation>
+                    Ce blog a pour vocation de vous faire découvrir le monde
+                    merveilleux des ramens, ce plat japonais bien souvent
+                    méconnu en France. <br />
+                    Vous trouverez ici un ensemble de{" "}
+                    <span className="bold">recettes</span> que j'ai pu
+                    expérimenter au fil des ans.
+                  </ParaPresentation>
+                </div>
+                <div className="col col-droite">
+                  <Img
+                    fluid={data.illustration.childImageSharp.fluid}
+                    alt="Illustration bol de ramen"
+                    title="Illustration bol de ramen"
+                  />
+                </div>
+              </ContentPresentation>
+            </SectionPresentation>
+            <BackgroundImage
+              Tag="section"
+              fluid={data.background_listing.childImageSharp.fluid}
+            >
+              <SectionListing className="content-center">
+                <TitreListing>
+                  Les dernières recettes pour vos ramens
+                </TitreListing>
+                <ConteneurListing>
+                  {recettes.map((recette, i) => (
+                    <RecetteCard
+                      key={i}
+                      titreRecette={recette.data.titre_recette.text}
+                      descriptionCourte={recette.data.description_courte.html}
+                      vignette={
+                        recette.data.vignette.localFile.childImageSharp.fixed
+                      }
+                      uid={recette.uid}
+                    />
+                  ))}
+                </ConteneurListing>
+              </SectionListing>
+            </BackgroundImage>
+            {/* 
       <TransitionLink
         to="/page-2/"
         exit={exitTransition}
@@ -187,9 +201,9 @@ const IndexPage = ({ data }) => {
         Go to page 2
       </TransitionLink>
       */}
-        </React.Fragment>
-      )}
-    </myContext.Consumer>
+          </React.Fragment>
+        )}
+      </myContext.Consumer>
     </Layout>
   )
 }

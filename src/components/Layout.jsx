@@ -18,7 +18,7 @@ import { theme, globalStyles } from "../styles"
 import Header from "./header"
 import Footer from "./footer"
 
-import { myContext } from '../../provider';
+import { myContext } from "../../provider"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -35,7 +35,13 @@ const Layout = ({ children }) => {
     <myContext.Consumer>
       {context => (
         <React.Fragment>
-          <div className={context.isDark ? 'darkTheme' : 'lightTheme'}>
+          <div
+            className={
+              context.isDark
+                ? "globalStyle darkTheme"
+                : "globalStyle lightTheme"
+            }
+          >
             <>
               <ThemeProvider theme={theme}>
                 <Global styles={globalStyles} />

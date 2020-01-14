@@ -24,7 +24,12 @@ const BlocDesc = styled("div")`
   font-size: 1.6rem;
   line-height: 2.4rem;
 
-  background-color: ${theme.colors.tertiary};
+  .lightTheme & {
+    background-color: ${theme.colors.light.bg};
+  }
+  .darkTheme & {
+    background-color: ${theme.colors.dark.bg};
+  }
 `
 const TitreRecette = styled("h2")`
   min-height: 6rem;
@@ -50,13 +55,20 @@ const ButtonLink = styled("div")`
     margin-top: 1.5rem;
     border-radius: 3px;
 
-    background-color: ${theme.colors.primary};
     font-weight: 600;
-    color: ${theme.colors.tertiary};
+
     text-decoration: none;
     font-style: normal;
+    color: ${theme.colors.light.bg};
+    background-color: ${theme.colors.light.primary};
+
     :hover {
-      background-color: ${theme.colors.paragraph};
+      .lightTheme & {
+        background-color: ${theme.colors.paragraph};
+      }
+      .darkTheme & {
+        background-color: ${theme.colors.paragraph};
+      }
     }
   }
 `

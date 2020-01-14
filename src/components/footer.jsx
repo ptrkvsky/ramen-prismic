@@ -5,11 +5,11 @@ import theme from "../styles/theme"
 
 const BlockFooter = styled("footer")`
   padding: 50px 0;
-  background-color: ${theme.colors.bgFooter};
+  background-color: ${theme.colors.light.bgFooter};
   font-size: 2rem;
-  color: ${theme.colors.tertiary};
+  color: ${theme.colors.light.secondary};
   a {
-    color: ${theme.colors.tertiary};
+    color: ${theme.colors.light.secondary};
   }
 `
 const Footer = () => (
