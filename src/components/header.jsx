@@ -1,6 +1,7 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import Switch from "react-switch"
 
 import styled from "@emotion/styled"
 import theme from "../styles/theme"
@@ -19,6 +20,8 @@ const BlocHeader = styled("header")`
   }
 `
 const ContentCenter = styled("div")`
+  display: flex;
+  justify-content: space-between;
   margin: 0 auto;
   max-width: ${theme.maxWidth};
   padding: 1.45rem 1.0875rem;
@@ -56,10 +59,21 @@ const Header = ({ siteTitle }) => (
         <ContentCenter>
           <MainTitle>
             <Link to="/">{siteTitle}</Link>
-            <button onClick={() => context.changeTheme()}>
-              {context.isDark ? "Light" : "Dark"}
-            </button>
           </MainTitle>
+          <Switch
+            offColor={theme.colors.light.paragraph}
+            onColor={theme.colors.dark.primary}
+            onChange={() => context.changeTheme()}
+            checked={context.isDark === true}
+            handleDiameter={30}
+            uncheckedIcon={false}
+            checkedIcon={false}
+            boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+            activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+            height={20}
+            width={48}
+            aria-label="Changer le theme du site"
+          />
         </ContentCenter>
       </BlocHeader>
     )}
