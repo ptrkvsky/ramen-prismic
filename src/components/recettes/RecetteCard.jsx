@@ -16,7 +16,7 @@ const Article = styled("article")`
     0 22.3px 17.9px rgba(0, 0, 0, 0.012), 0 41.8px 33.4px rgba(0, 0, 0, 0.014),
     0 100px 80px rgba(0, 0, 0, 0.02);
 
-  .gatsby-image-wrapper{
+  .gatsby-image-wrapper {
     min-height: 175px;
   }
 `
@@ -25,8 +25,8 @@ const BlocDesc = styled("div")`
   min-height: 190px;
   padding: 3rem 2.5rem;
 
-  font-size: 1.6rem;
-  line-height: 2.4rem;
+  font-size: 1.8rem;
+  line-height: 1.4;
 
   .lightTheme & {
     background-color: ${theme.colors.light.bg};
@@ -36,13 +36,13 @@ const BlocDesc = styled("div")`
   }
 `
 const TitreRecette = styled("h2")`
-  min-height: 6rem;
-  padding: 0 0 1.5rem;
+  padding: 0 0 2.5rem;
 
-  font-family: ${theme.fonts.secondary};
-  font-size: 2.4rem;
-  color: ${theme.colors.primary};
+  font-size: 3.4rem;
   text-transform: uppercase;
+  color: ${theme.colors.light.paragraph};
+  font-weight: bold;
+  line-height: 1;
 
   @media (max-width: ${theme.breakpoints.s}) {
     min-height: 0;
@@ -97,11 +97,11 @@ const RecetteCard = ({ titreRecette, descriptionCourte, vignette, uid }) => {
       <BlocDesc className="border-bottom-radius">
         <TitreRecette>{titreRecette}</TitreRecette>
         <div>{descriptionCourte}</div>
-        <ButtonLink>
+        {/* <ButtonLink>
           <AniLink fade to={`/recettes/${uid}`}>
             Miam Miam
           </AniLink>
-        </ButtonLink>
+        </ButtonLink> */}
       </BlocDesc>
     </Article>
   )

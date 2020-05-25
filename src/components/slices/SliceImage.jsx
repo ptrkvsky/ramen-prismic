@@ -7,6 +7,7 @@ const SectionImage = styled("div")`
 `
 
 export default ({ slice }) => {
+  console.log(slice.primary.section_imageSharp.childImageSharp.fluid)
   return (
     <SectionImage>
       <Img

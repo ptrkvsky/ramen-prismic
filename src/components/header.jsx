@@ -10,8 +10,8 @@ import { myContext } from "../../provider"
 
 const BlocHeader = styled("header")`
   .lightTheme & {
-    background-color: ${theme.colors.light.bg};
-    border-bottom: 10px solid ${theme.colors.light.primary};
+    background-color: ${theme.colors.light.primary}; 
+    /* border-bottom: 10px solid ${theme.colors.light.primary}; */
   }
 
   .darkTheme & {
@@ -32,7 +32,8 @@ const MainTitle = styled("div")`
   font-family: "Bangers";
   a {
     .lightTheme & {
-      color: ${theme.colors.light.primary};
+      color: ${theme.colors.light.bg};
+      text-decoration: none;
     }
 
     .darkTheme & {

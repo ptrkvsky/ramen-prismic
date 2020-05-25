@@ -32,8 +32,10 @@
     "gatsby-source-prismic-graphql": "^3.6.2",
     "gatsby-transformer-sharp": "^2.3.9",
     "gsap": "^3.0.4",
+    "husky": "^4.2.5",
     "install": "^0.13.0",
     "intersection-observer": "^0.7.0",
+    "lint-staged": "^10.2.6",
     "node-sass": "^4.14.1",
     "npm": "^6.14.5",
     "prismic-javascript": "^2.7.1",
@@ -69,7 +71,9 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
+    "lint:fix": "npx lint --fix"
   },
   "repository": {
     "type": "git",
@@ -78,4 +82,5 @@
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
+
 }
