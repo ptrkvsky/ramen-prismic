@@ -10,7 +10,8 @@ const RecetteSlices = ({ slices }) => {
   if (slices !== undefined) {
     return slices.map((slice, index) => {
       const res = (() => {
-        switch (slice.slice_type) {
+        const { type } = slice
+        switch (type) {
           case "section_image_2":
             return <SliceImageDroite slice={slice} />
           case "text":

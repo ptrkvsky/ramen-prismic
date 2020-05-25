@@ -2,6 +2,7 @@ import React from "react"
 import Img from "gatsby-image"
 import styled from "@emotion/styled"
 import theme from "../../styles/theme"
+import { RichText } from "prismic-reactjs";
 
 const SectionImageDroite = styled("section")`
   display: grid;
@@ -9,6 +10,10 @@ const SectionImageDroite = styled("section")`
   @media (max-width: ${theme.breakpoints.m}) {
     grid-template-columns: unset;
     grid-template-rows: 1fr 1fr;
+  }
+
+  .gatsby-image-wrapper{
+    min-height: 100%;
   }
 
   .texte_a_droite {
@@ -30,11 +35,12 @@ export default ({ slice }) => {
     <SectionImageDroite>
       <div
         className="texte_a_droite"
-        dangerouslySetInnerHTML={{ __html: slice.items[0].texte_a_droite.html }}
-      />
+      >
+        {RichText.render(slice.fields[0].texte_a_droite) }
+      </div>
       <div className="image_a_gauche">
         <Img
-          fluid={slice.items[0].image_a_gauche.localFile.childImageSharp.fluid}
+          fluid={slice.fields[0].image_a_gaucheSharp.childImageSharp.fluid}
         />
       </div>
     </SectionImageDroite>

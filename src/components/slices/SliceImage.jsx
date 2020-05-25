@@ -10,7 +10,7 @@ export default ({ slice }) => {
   return (
     <SectionImage>
       <Img
-        fluid={slice.primary.section_image.localFile.childImageSharp.fluid}
+        fluid={slice.primary.section_imageSharp.childImageSharp.fluid}
       />
     </SectionImage>
   )

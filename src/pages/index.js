@@ -133,8 +133,8 @@ const entryTransition = {
 }
 
 const IndexPage = ({ data }) => {
-  console.log(data.illustration.childImageSharp.fluid)
-  const recettes = data.allPrismicArticle.nodes
+  const recettes = data.prismic.allArticles.edges
+  
   if (!recettes) return null
 
   return (
@@ -181,12 +181,12 @@ const IndexPage = ({ data }) => {
                   {recettes.map((recette, i) => (
                     <RecetteCard
                       key={i}
-                      titreRecette={recette.data.titre_recette.text}
-                      descriptionCourte={recette.data.description_courte.html}
+                      titreRecette={recette.node.titre_recette[0].text}
+                      descriptionCourte={recette.node.description_courte[0].text}
                       vignette={
-                        recette.data.vignette.localFile.childImageSharp.fixed
+                        recette.node.hero_imageSharp.childImageSharp.fluid
                       }
-                      uid={recette.uid}
+                      uid={recette.node._meta.uid}
                     />
                   ))}
                 </ConteneurListing>
@@ -208,32 +208,36 @@ const IndexPage = ({ data }) => {
   )
 }
 export default IndexPage
-
 export const query = graphql`
   {
-    allPrismicArticle {
-      nodes {
-        uid
-        data {
-          description_courte {
-            html
+  prismic {
+    allArticles {
+      edges {
+        node {
+          _meta {
+            uid
           }
-          titre_recette {
-            text
-          }
-          vignette {
-            localFile {
-              childImageSharp {
-                fixed(height: 360, width: 360) {
-                  ...GatsbyImageSharpFixed
-                }
+          description_courte
+          titre_recette
+          vignette
+          hero_image
+          hero_imageSharp {
+            childImageSharp {
+              fluid {
+                base64
+                tracedSVG
+                srcWebp
+                srcSetWebp
+                originalImg
+                originalName
               }
             }
           }
         }
       }
     }
-    site {
+  }
+  site {
       siteMetadata {
         title
         description
@@ -254,5 +258,6 @@ export const query = graphql`
         }
       }
     }
-  }
+}
+
 `

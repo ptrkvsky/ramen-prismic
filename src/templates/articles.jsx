@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Link } from "react-scroll"
+import { RichText } from "prismic-reactjs";
 
 import styled from "@emotion/styled"
 import theme from "../styles/theme"
@@ -157,34 +158,36 @@ const Citation = styled("div")`
   text-align: center;
 `
 
-const Article = ({ data: { prismicArticle } }) => {
-  const { data } = prismicArticle
+const Article = ({ data }) => {
+  const {article} = data.prismic
+  console.log(article)
   return (
     <Layout>
-      <SEO title={`🍜 ${data.titre_recette.text}`} />
+      <SEO title={`🍜 ${article.meta_title}`} />
       <HeroBanner>
         <BackgroundImage
           Tag="div"
           className="hero_banner"
-          fluid={data.hero_image.localFile.childImageSharp.fluid}
+          fluid={article.hero_imageSharp.childImageSharp.fluid}
         ></BackgroundImage>
       </HeroBanner>
 
       <ContentRecette>
         <GridPresentationRecette>
           <PresentationRecette>
-            <h1 className="titre-recette">{data.titre_recette.text}</h1>
+            <h1 className="titre-recette">{article.titre_recette[0].text}</h1>
             <h2 className="sous-titre">Ingrédients :</h2>
             <div
               className="paragraph-card"
-              dangerouslySetInnerHTML={{ __html: data.ingredients.html }}
-            />
+            >
+              {RichText.render(article.ingredients)}
+            </div>
             <p className="sous-titre">Temps de préparation :</p>
-            <p className="paragraph-card">{data.temps_de_preparation}</p>
+            <p className="paragraph-card">{article.temps_de_preparation[0].text}</p>
           </PresentationRecette>
           <ConteneurCitation>
             <Citation>
-              <div className="guillemets">{data.citation.text}</div>
+              <div className="guillemets">{article.citation[0].text}</div>
             </Citation>
           </ConteneurCitation>
         </GridPresentationRecette>
@@ -202,8 +205,8 @@ const Article = ({ data: { prismicArticle } }) => {
             bas de page.
           </Link>
         </p>
-        <RecetteSlices slices={data.body} />
-        <FormContact formName={data.titre_recette.text} />
+        <RecetteSlices slices={article.body} />
+        <FormContact formName={article.titre_recette[0].text} />
       </ContentRecette>
     </Layout>
   )
@@ -215,115 +218,116 @@ Article.propTypes = {
 
 export default Article
 export const pageQuery = graphql`
-  query ArticleBySlug($uid: String) {
-    prismicArticle(uid: { eq: $uid }) {
-      data {
-        meta_title
-        titre_recette {
-          html
-          text
-        }
+  query ArticleBySlug($uid: String!) {
+    prismic {
+      article(uid: $uid, lang: "fr-fr") {
+        titre_recette
+        vignette
+        description_courte
+        ingredients
         temps_de_preparation
-        citation {
-          text
-        }
-        hero_image {
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 1920) {
-                ...GatsbyImageSharpFluid
-              }
+        hero_image
+        hero_imageSharp {
+          childImageSharp {
+            fluid {
+              base64
+              tracedSVG
+              srcWebp
+              srcSetWebp
+              originalImg
+              originalName
             }
           }
         }
-        ingredients {
-          html
-        }
+        citation
+        meta_title
+        meta_description
+        _linkType
         body {
-          ... on PrismicArticleBodyImage {
-            id
-            primary {
-              section_image {
-                alt
-                copyright
-                url
-                localFile {
-                  childImageSharp {
-                    fluid(maxWidth: 1000) {
-                      ...GatsbyImageSharpFluid
-                    }
-                  }
-                }
-              }
-            }
-            slice_type
-          }
-          ... on PrismicArticleBodyText {
-            id
-            slice_type
-            items {
-              texte_a_droite {
-                html
-              }
-              image_a_gauche {
-                localFile {
-                  childImageSharp {
-                    fluid(maxWidth: 1000) {
-                      ...GatsbyImageSharpFluid
-                    }
+          ... on PRISMIC_ArticleBodyText {
+            type
+            label
+            fields {
+              image_a_gauche
+              texte_a_droite
+              image_a_gaucheSharp {
+                childImageSharp {
+                  fluid {
+                    base64
+                    tracedSVG
+                    srcWebp
+                    srcSetWebp
+                    originalImg
+                    originalName
                   }
                 }
               }
             }
           }
-          ... on PrismicArticleBodyRichText {
-            id
-            slice_type
-            primary {
-              rich_text {
-                html
-                text
-              }
-            }
-          }
-          ... on PrismicArticleBodySectionImage2 {
-            id
-            slice_type
-            items {
-              image_a_droite {
-                localFile {
-                  childImageSharp {
-                    fluid(maxWidth: 1000) {
-                      ...GatsbyImageSharpFluid
-                    }
-                  }
-                }
-              }
-              texte_a_gauche {
-                html
-              }
-            }
-          }
-          ... on PrismicArticleBodySommaire {
-            items {
+          ... on PRISMIC_ArticleBodySommaire {
+            type
+            label
+            fields {
               id_item_sommaire
               item_sommaire
             }
-            slice_type
           }
-          ... on PrismicArticleBodyTitreAvecSommaire {
-            id
-            slice_type
-            items {
-              hn_sommaire {
-                html
-              }
+          ... on PRISMIC_ArticleBodyTitre_avec_sommaire {
+            type
+            label
+            fields {
+              hn_sommaire
               id_sommaire
+            }
+          }
+          ... on PRISMIC_ArticleBodySection_image_2 {
+            type
+            label
+            fields {
+              image_a_droite
+              texte_a_gauche
+              image_a_droiteSharp {
+                childImageSharp {
+                  fluid {
+                    base64
+                    tracedSVG
+                    srcWebp
+                    srcSetWebp
+                    originalImg
+                    originalName
+                  }
+                }
+              }
+            }
+          }
+          ... on PRISMIC_ArticleBodyRich_text {
+            type
+            label
+            primary {
+              rich_text
+            }
+          }
+          ... on PRISMIC_ArticleBodyImage {
+            type
+            label
+            primary {
+              section_imageSharp {
+                childImageSharp {
+                  fluid {
+                    base64
+                    tracedSVG
+                    srcWebp
+                    srcSetWebp
+                    originalImg
+                    originalName
+                  }
+                }
+              }
+              section_image
             }
           }
         }
       }
-      uid
     }
   }
 `

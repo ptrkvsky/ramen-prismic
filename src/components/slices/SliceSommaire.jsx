@@ -69,10 +69,9 @@ export default ({ slice }) => {
       <h2 className="titre-sommaire">🍜 Étapes de la préparation</h2>
       <nav className="list-sommaire">
         <ol>
-          {slice.items.map(function(item) {
+          {slice.fields.map(function(item) {
             return (
               <li>
-                {console.log(item.item_sommaire)}
                 <Link
                   className="item-sommaire"
                   activeClass="active"

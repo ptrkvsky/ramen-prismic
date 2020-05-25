@@ -5,10 +5,14 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const pages = await graphql(`
     {
-      allPrismicArticle {
-        edges {
-          node {
-            uid
+      prismic {
+        allArticles {
+          edges {
+            node {
+              _meta {
+                uid
+              }
+            }
           }
         }
       }
@@ -17,12 +21,12 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const template = path.resolve("src/templates/articles.jsx")
 
-  pages.data.allPrismicArticle.edges.forEach(edge => {
+  pages.data.prismic.allArticles.edges.forEach(edge => {
     createPage({
-      path: `/recettes/${edge.node.uid}`,
+      path: `/recettes/${edge.node._meta.uid}`,
       component: template,
       context: {
-        uid: edge.node.uid,
+        uid: edge.node._meta.uid,
       },
     })
   })

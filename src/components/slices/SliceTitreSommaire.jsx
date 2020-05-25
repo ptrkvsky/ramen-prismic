@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 import theme from "../../styles/theme"
+import { RichText } from "prismic-reactjs";
 
 const TitreSommaire = styled("div")`
   max-width: 740px;
@@ -18,11 +19,10 @@ const TitreSommaire = styled("div")`
 export default ({ slice }) => {
   return (
     <TitreSommaire
-      id={slice.items[0].id_sommaire}
+      id={slice.fields[0].id_sommaire}
       className="titre_sommaire"
-      dangerouslySetInnerHTML={{
-        __html: slice.items[0].hn_sommaire.html,
-      }}
-    />
+    >
+      {RichText.render(slice.fields[0].hn_sommaire)}
+    </TitreSommaire>
   )
 }

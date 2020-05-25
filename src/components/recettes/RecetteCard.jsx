@@ -15,6 +15,10 @@ const Article = styled("article")`
     0 6.7px 5.3px rgba(0, 0, 0, 0.008), 0 12.5px 10px rgba(0, 0, 0, 0.01),
     0 22.3px 17.9px rgba(0, 0, 0, 0.012), 0 41.8px 33.4px rgba(0, 0, 0, 0.014),
     0 100px 80px rgba(0, 0, 0, 0.02);
+
+  .gatsby-image-wrapper{
+    min-height: 175px;
+  }
 `
 const BlocDesc = styled("div")`
   display: block;
@@ -74,8 +78,9 @@ const ButtonLink = styled("div")`
 `
 
 const RecetteCard = ({ titreRecette, descriptionCourte, vignette, uid }) => {
+  console.log(vignette)
   return (
-    <Article>
+    <Article className="block-recette">
       <AniLink
         duration={0.6}
         hex={theme.colors.bgSnd}
@@ -84,14 +89,14 @@ const RecetteCard = ({ titreRecette, descriptionCourte, vignette, uid }) => {
         to={`/recettes/${uid}`}
       >
         <Img
-          fixed={vignette}
+          fluid={vignette}
           alt={titreRecette}
           className="border-top-radius"
         />
       </AniLink>
       <BlocDesc className="border-bottom-radius">
         <TitreRecette>{titreRecette}</TitreRecette>
-        <div dangerouslySetInnerHTML={{ __html: descriptionCourte }} />
+        <div>{descriptionCourte}</div>
         <ButtonLink>
           <AniLink fade to={`/recettes/${uid}`}>
             Miam Miam
