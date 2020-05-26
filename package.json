@@ -9,7 +9,9 @@
     "@emotion/styled": "^10.0.23",
     "@flive/react-sigfox-brand": "^1.2.2",
     "axios": "^0.19.1",
+    "cypress": "^4.6.0",
     "emotion-theming": "^10.0.19",
+    "eslint-plugin-cypress": "^2.10.3",
     "gatsby": "^2.18.11",
     "gatsby-background-image": "^0.9.12",
     "gatsby-image": "^2.2.36",
@@ -48,6 +50,7 @@
     "react-switch": "^5.0.1"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^6.0.0",
     "babel-eslint": "^10.0.3",
     "dotenv": "^8.2.0",
     "eslint": "^6.7.2",
@@ -73,7 +76,8 @@
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
-    "lint:fix": "npx lint --fix"
+    "lint:fix": "npx lint --fix",
+    "cy:open": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -82,5 +86,4 @@
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
-
 }

@@ -134,7 +134,7 @@ const entryTransition = {
 
 const IndexPage = ({ data }) => {
   const recettes = data.prismic.allArticles.edges
-  
+  console.log(recettes)
   if (!recettes) return null
 
   return (
@@ -182,7 +182,9 @@ const IndexPage = ({ data }) => {
                     <RecetteCard
                       key={i}
                       titreRecette={recette.node.titre_recette[0].text}
-                      descriptionCourte={recette.node.description_courte[0].text}
+                      descriptionCourte={
+                        recette.node.description_courte[0].text
+                      }
                       vignette={
                         recette.node.hero_imageSharp.childImageSharp.fluid
                       }
@@ -210,34 +212,34 @@ const IndexPage = ({ data }) => {
 export default IndexPage
 export const query = graphql`
   {
-  prismic {
-    allArticles {
-      edges {
-        node {
-          _meta {
-            uid
-          }
-          description_courte
-          titre_recette
-          vignette
-          hero_image
-          hero_imageSharp {
-            childImageSharp {
-              fluid {
-                base64
-                tracedSVG
-                srcWebp
-                srcSetWebp
-                originalImg
-                originalName
+    prismic {
+      allArticles {
+        edges {
+          node {
+            _meta {
+              uid
+            }
+            description_courte
+            titre_recette
+            vignette
+            hero_image
+            hero_imageSharp {
+              childImageSharp {
+                fluid {
+                  base64
+                  tracedSVG
+                  srcWebp
+                  srcSetWebp
+                  originalImg
+                  originalName
+                }
               }
             }
           }
         }
       }
     }
-  }
-  site {
+    site {
       siteMetadata {
         title
         description
@@ -258,6 +260,5 @@ export const query = graphql`
         }
       }
     }
-}
-
+  }
 `
