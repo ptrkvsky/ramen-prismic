@@ -11,10 +11,5 @@ pipeline {
                 sh 'npm install' 
             }
         }
-        stage('Cypress') { 
-            steps {
-                sh '$(npm bin)/cypress open' 
-            }
-        }
     }
 }
