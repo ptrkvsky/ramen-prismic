@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Link } from "react-scroll"
-import { RichText } from "prismic-reactjs";
+import { RichText } from "prismic-reactjs"
 
 import styled from "@emotion/styled"
 import theme from "../styles/theme"
@@ -159,11 +159,11 @@ const Citation = styled("div")`
 `
 
 const Article = ({ data }) => {
-  const {article} = data.prismic
+  const { article } = data.prismic
   console.log(article)
   return (
     <Layout>
-      <SEO title={`🍜 ${article.meta_title}`} />
+      <SEO title={`🍜 ${article.meta_title} | Ramen Noob`} />
       <HeroBanner>
         <BackgroundImage
           Tag="div"
@@ -177,13 +177,13 @@ const Article = ({ data }) => {
           <PresentationRecette>
             <h1 className="titre-recette">{article.titre_recette[0].text}</h1>
             <h2 className="sous-titre">Ingrédients :</h2>
-            <div
-              className="paragraph-card"
-            >
+            <div className="paragraph-card">
               {RichText.render(article.ingredients)}
             </div>
             <p className="sous-titre">Temps de préparation :</p>
-            <p className="paragraph-card">{article.temps_de_preparation[0].text}</p>
+            <p className="paragraph-card">
+              {article.temps_de_preparation[0].text}
+            </p>
           </PresentationRecette>
           <ConteneurCitation>
             <Citation>
